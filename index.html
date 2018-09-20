@@ -513,7 +513,8 @@
       
         
           
-          Welcome to Hexo! Thi
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -662,7 +663,18 @@
           触发器触发器的介绍
 触发器是什么
 
-触发
+触发器是一种特殊的存储过程，
+触发器就像一个炸弹的引线一样，当一件事发生时，另一件事，也会发生，有点类似于 自定义的外键关联
+可以使用触发器关联两张表, 当一张表发生了 (delete, update, insert) 的操作后，对另一张表进行相应的操作
+触发器的操作支持事务，当所有操作都完成的时候才能提交
+
+
+触发器的原理
+
+使用存储过程
+
+
+触发器的应用场景
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -839,7 +851,21 @@
         
           
           hexo 搭建个人博客基础使用
-http
+https://www.jianshu.com/p/189fd945f38f
+
+1. 下载git2. 下载node.js3. 使用git bash 安装hexo1. 新建文件夹 hexo2. 使用git命令下载1npm install -g hexo
+3. hexo 安装1hexo init
+git 命令hexo命令
+
+
+命令
+说明
+
+
+
+
+hexo server
+
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1016,7 +1042,39 @@ http
         
           
           linux shell 编程
-以$开头的
+以$开头的变量的作用
+
+
+
+
+函数
+说明
+
+
+
+
+$n
+{0, 1, 2, 3, 4, 5}获取控制台参数 相当于 sys.argv[0]
+
+
+$$
+表示shell本身的PID
+
+
+$!
+表示运行的命令的结束代码（返回值）
+
+
+$-
+使用set命令设定的FLAG 一览
+
+
+$*
+表示所有的参数列表(以 “$1 $2 $3 $4” 的形式)
+
+
+$@
+表示所有的参数列表
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1193,7 +1251,19 @@ http
         
           
           一、移动光标
-h,j,k,l 上，下，左
+h,j,k,l 上，下，左，右
+ctrl-e 移动页面
+ctrl-f 上翻一页
+ctrl-b 下翻一页
+ctrl-u 上翻半页
+ctrl-d 下翻半页
+w 跳到下一个字首，按标点或单词分割
+W 跳到下一个字首，长跳，如end-of-line被认为是一个字
+e 跳到下一个字尾
+E 跳到下一个字尾，长跳
+b 跳到上一个字
+B 跳到上一个字，长跳
+0 跳至行首，不管有无缩进，就是跳到第0个
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1370,7 +1440,20 @@ h,j,k,l 上，下，左
         
           
           1. 安装 docker
-版本要求，查看
+版本要求，查看各自系统最低支持版本 uname -r
+ubuntu 3.10 
+centos 6.5以上
+
+
+安装
+wget -qO- https://get.docker.com/ | sh
+
+开启docker服务
+sudo service docker start
+
+修改docker权限，不需要加 sudo 也可执行(非必需)
+cd /var/run/docker
+s
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1549,7 +1632,18 @@ h,j,k,l 上，下，左
           1. 视图
 视图介绍
 
-视图是一种抽象行
+视图是一种抽象行为，将查询的结果作为一张表进行存储，叫做视图
+视图是一种面向函数的行为，将经常查询的表格创建视图存储下来
+可以提升查询的效率，因为视图已经在缓存层面进行存储，所以不需要解析树解析
+减少一大段的sql 语句的编写，减少出错的概率
+
+
+
+
+查看视图
+show table status where comment = &apos;view&apos;；
+
+创建视图
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1726,6 +1820,17 @@ h,j,k,l 上，下，左
         
           
           创建训练用的库表 source file
+linux 上无法导入，请另存为utf8编码格式
+
+# 创建数据库表
+create database train_sql default charset utf8;
+use train_sql;
+
+#建学生信息表student
+create table student
+(
+sno varchar(20) not null primary key,
+snam
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1902,7 +2007,19 @@ h,j,k,l 上，下，左
         
           
           django 中的 FBV 和 CBV
+FBV function basic views
 
+使用函数进行处理相应的url
+def student(request):
+    return HttpResponse(&apos;student&apos;)
+
+
+
+CBV class basic views
+
+使用类进行处理响应的url
+# urls.py
+url(r&apos;^students/&
           ...
           <!--noindex-->
           <div class="post-button text-center">

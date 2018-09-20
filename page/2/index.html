@@ -411,6 +411,27 @@
 
 
 
+.gz
+gzip
+gunzip(gzip -d)
+压缩比中等，不可压缩文件
+
+
+.tar
+tar -cvf xxx.tar xxx
+tar -xvf xxx.tar
+打包
+
+
+.tar.gz
+tar -zcvf xxx.tar.gz xxx
+tar -zxvf xxx.tar.gz
+一般为源代码的安装包
+
+
+.zip
+zip xxx
+unzip xxx.z
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -587,7 +608,27 @@
         
           
           网络基础OSI 七层协议
-物理层 ,数据
+物理层 ,数据链路层 , 网络层 ,传输层 ,会话层, 表示层, 应用层
+
+
+
+
+层
+说明
+
+
+
+
+物理层
+主要用来定义物理设备标准,用来传输比特流(0和1 的电流表示)这一层的数据叫做bite(比特)
+
+
+数据链路层
+定义如何让格式化数据进行传输,以及如何让控制对物理介质进行访问这一层通常还会提供错误检测和纠正,以确保数据的可靠传输
+
+
+网络层
+对位于不同地理位置的网络
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -763,7 +804,17 @@
       
         
           
-          了解 Flaskflask搭建示例fro
+          了解 Flaskflask搭建示例from flask import Flask
+
+app = Flask(__name__)
+
+# 路由
+@app.route(&apos;/&apos;)
+def hello_world():
+    return &apos;Hello world&apos;
+
+if __name__ == &apos;__main__&apos;:
+    app.run(
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -941,7 +992,15 @@
           
           
 python介绍python特点
-简单
+简单 简洁
+功能强大 （自动化脚本，爬虫，网站后端，算法，人工智能接口）
+运行效率低，开发效率高
+代码开放（开源）
+python是一个胶水语言，可以很好的跟其他编程语言交互
+python有很好的跨平台性能
+python是解释型的，高级的，面向对象的编程语言
+
+python构成数据(内建类 built-in) ==&gt; 语句 ==&gt; 语句块 ==&gt;
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1118,7 +1177,13 @@ python介绍python特点
         
           
           scrapy-redis 分布式爬虫
-原
+原理介绍
+
+
+单机式爬虫使用时，scheduler 调度器维护 一个requests队列
+在多台主机一同爬取，共同协作时，多台主机使用request时，访问的是同一个requests队列
+即共享爬取队列，由一台主机(master)进行维护共享队列
+多台(slave)从机负责具体的数据爬取，数据处理，数据存储当主机无法承载，或无法维护共享队列时，主机的处理能力，
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1297,7 +1362,21 @@ python介绍python特点
           git 是一个分布式版本控制系统
 
 
-特
+特点
+集中式
+分布式
+
+
+
+
+系统特点
+1.集中式系统，版本库集中存放于中央服务器2.企业内并行集中开发3.windows推荐使用4.克隆大量文件时，速度慢
+1.分布式系统，版本库保存在所有人的电脑里2.开源项目开发3.mac，linux上推荐使用4.克隆大量文件时，速度快
+
+
+灵活性
+中央服务器出现故障，所有操作无法执行
+1.git服务器出现故障，不影响本机
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1632,8 +1711,10 @@ python介绍python特点
         
           
           MongoDB 基础
-mongoDB是 
-          ...
+mongoDB是 一种非关系型数据库，也可以成为 no-sql （not only sql）
+
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/18/mongo/#more" rel="contents">
@@ -1808,7 +1889,13 @@ mongoDB是
       
         
           
-          ##item模块 定义所要爬取的字段  
+          ##item模块 定义所要爬取的字段    import scrapy
+class Product(scrapy.Item):
+    name = scrapy.Field()
+    price = scrapy.Field()
+    stock = scrapy.Field()
+    last_updated = scrapy.Field(serializer=str)
+##pipeli
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1984,7 +2071,18 @@ mongoDB是
       
         
           
-          matplotlibimport num
+          matplotlibimport numpy as np
+import matplotlib.pyplot as mp
+
+# 一条余弦曲线，一条正弦曲线
+
+# 将-pi 到 pi 等分为 999 份，共1000个点
+x = np.linspace(-np.pi, np.pi, 1000)
+
+# 获取纵坐标
+cos_y = np.cos(x) / 2
+sin_y = np.sin(x)
+# 绘制图形
           ...
           <!--noindex-->
           <div class="post-button text-center">

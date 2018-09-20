@@ -404,7 +404,22 @@
 numpy
 matplotlib
 
-算
+算术平均值
+算术平均值就是对真值的无偏估计
+
+np.mean()
+
+加权平均值
+样本 ： S = [s1, s2, s3…]
+
+权重 ： W = [w1, w2, w3…]
+加权平均值 : a = (s1*w1 + s2*w2 + s3*w3) / (w1 + w2 + w3)
+
+np.average(S, weights = W )
+
+
+
+最大值 和 最小值
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -580,7 +595,17 @@ matplotlib
       
         
           
-          模块介绍init.py    项目初始化
+          模块介绍init.py    项目初始化文件，每当服务器启动的时候，都会自动执行
+urls.py
+
+项目的基础url(路由）配置文件／主路由配置文件
+将请求地址映射到对应的视图上
+默认在主目录中，主路由配置文件，包含所有的地址映射
+每一个请求到达后，由urls.py中的urlpatterns中的url()去匹配
+当url()匹配上之后，请求给views.py进行处理
+
+１．url函数
+url(re
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -757,7 +782,22 @@ matplotlib
         
           
           Numpy入门Numpy 的特点
-擅长数
+擅长数值计算
+足够高的运算性能，使用c语言编写
+支持矢量计算运算
+免费，开源
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+import datetime as dt
+import numpy as np
+
+n = 100000
+A, B = [], []
+C = []
+
+
+def
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -934,7 +974,15 @@ matplotlib
         
           
           Spider
-spider类定义了如何爬
+spider类定义了如何爬取网站，包括怕去的动作，以及如何从网页中的内容提取结构化数据
+spider类继承于Scrapy.spiders.Spider
+parse 函数 是解析网页并返回信息的函数，parse接受response，返回包括 Item对象，dict，Request的可迭代容器
+
+
+在命令行 执行 crawl spider后执行的流程
+
+
+命令 crawl 执行 == &
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1112,7 +1160,22 @@ spider类定义了如何爬
           
           srcapy爬虫框架
 安装
-使用anac
+使用anaconda 命令 conda install scrapy
+安装完毕后，在命令行中，测试 scrapy 是否能够正续航运行
+
+
+
+
+创建项目
+
+进入文件夹，使用cmd 命令行执行
+scarpy startproject &lt;projectname&gt;
+
+进入创建好的文件夹 
+cd projectname
+
+创建 spider
+scrapy genspi
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1289,7 +1352,21 @@ spider类定义了如何爬
         
           
           日志文件
-在程序中，调试是一项非常重要的
+在程序中，调试是一项非常重要的工作
+使用日志文件，可以让我们知道程序运行时的状态
+通过日志文件，了解程序的异常状态和异常位置
+
+python 内置模块 logginglogging 内部机制 与 apche 的log4j实现机制一致
+详细了解logging
+
+内部机制，待完善
+
+…
+
+基础使用
+
+
+logging包括 logger ， handler， filter， formatter
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1466,7 +1543,26 @@ spider类定义了如何爬
         
           
           
-BeautifulSoupfrom b
+BeautifulSoupfrom bs4 import BeautifulSoup
+
+
+
+解析器
+使用方法
+优势
+劣势
+
+
+
+
+Python标准库
+BeautifulSoup(markup, “html.parser”)
+Python的内置标准库执行速度适中文档容错能力强
+Python 2.7.3 or 3.2.2)前 的版本中文档容错能力差
+
+
+lxml HTML 解析器
+Beautiful
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1644,7 +1740,19 @@ BeautifulSoupfrom b
           
           获取动态页面
 网页通过动态加载信息
-无法
+无法直接通过html页面直接获取信息时
+通过向服务器发送请求获取信息
+通过浏览器帮助获取信息
+
+
+
+
+
+服务器与爬虫交互时，使用都是字节串的形式
+需要通过urlencode() 对url后再传递给服务器
+接收到服务器的信息后，需要对信息进行解码
+该网站可进行 解码 和 编码 的操作
+http://tool.chinaz.com/tools/urlencode.a
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1821,7 +1929,10 @@ BeautifulSoupfrom b
         
           
            tornado笔记 
-tornado介
+tornado介绍1.基础配置from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
+from tornado.options import define, parse_config_file, options
+from tornado.web import Applicatio
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1980,7 +2091,14 @@ tornado介
         
           
           前情回顾
-信号 ：在进程间通过信号传递讯
+信号 ：在进程间通过信号传递讯息
+
+信号处理函数：  os.kill(pid,sig) 发送
+
+
+信号    signal.alarm(sec)  向自己发送时钟    signal.pause()  阻塞等待    signal.signal(sig,handler) 处理信号     handler（sig,frame）
+
+信号量  semaphore  acquire()   删除
           ...
           <!--noindex-->
           <div class="post-button text-center">

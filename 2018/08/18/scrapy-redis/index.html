@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="scrapy-redis 分布式爬虫 原理介绍   单机式爬虫使用时，scheduler 调度器维护 一个requests队列 在多台主机一同爬取，共同协作时，多台主机使用request时，访问的是同一个requests队列 即共享爬取队列，由一台主机(master)进行维护共享队列 多台(slave)从机负责具体的数据爬取，数据处理，数据存储当主机无法承载，或无法维护共享队列时，主机的处理能力，">
+<meta name="keywords" content="scrapy分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/09/20/hello-world/index.html">
+<meta property="og:title" content="scrapy-redis">
+<meta property="og:url" content="http://yoursite.com/2018/08/18/scrapy-redis/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="scrapy-redis 分布式爬虫 原理介绍   单机式爬虫使用时，scheduler 调度器维护 一个requests队列 在多台主机一同爬取，共同协作时，多台主机使用request时，访问的是同一个requests队列 即共享爬取队列，由一台主机(master)进行维护共享队列 多台(slave)从机负责具体的数据爬取，数据处理，数据存储当主机无法承载，或无法维护共享队列时，主机的处理能力，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-20T07:46:11.000Z">
+<meta property="og:updated_time" content="2018-09-20T07:46:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="scrapy-redis">
+<meta name="twitter:description" content="scrapy-redis 分布式爬虫 原理介绍   单机式爬虫使用时，scheduler 调度器维护 一个requests队列 在多台主机一同爬取，共同协作时，多台主机使用request时，访问的是同一个requests队列 即共享爬取队列，由一台主机(master)进行维护共享队列 多台(slave)从机负责具体的数据爬取，数据处理，数据存储当主机无法承载，或无法维护共享队列时，主机的处理能力，">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/20/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/18/scrapy-redis/"/>
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>Hello World | Hexo</title>
+  <title>scrapy-redis | Hexo</title>
   
 
 
@@ -284,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/scrapy-redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Laurel-rao">
@@ -301,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">scrapy-redis
               
             
           </h1>
@@ -326,12 +327,46 @@
                 
               
 
-              <time title="创建时间：2018-09-20 15:46:11" itemprop="dateCreated datePublished" datetime="2018-09-20T15:46:11+08:00">2018-09-20</time>
+              <time title="创建时间：2018-08-18 15:44:15" itemprop="dateCreated datePublished" datetime="2018-08-18T15:44:15+08:00">2018-08-18</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-20 15:46:15" itemprop="dateModified" datetime="2018-09-20T15:46:15+08:00">2018-09-20</time>
+              
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/爬虫框架/" itemprop="url" rel="index"><span itemprop="name">爬虫框架</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -360,15 +395,40 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="scrapy-redis-分布式爬虫"><a href="#scrapy-redis-分布式爬虫" class="headerlink" title="scrapy-redis 分布式爬虫"></a>scrapy-redis 分布式爬虫</h1><blockquote>
+<p>原理介绍</p>
+</blockquote>
+<ul>
+<li>单机式爬虫使用时，scheduler 调度器维护 一个requests队列</li>
+<li>在多台主机一同爬取，共同协作时，多台主机使用request时，访问的是同一个requests队列</li>
+<li>即共享爬取队列，由一台主机(master)进行维护共享队列</li>
+<li>多台(slave)从机负责具体的数据爬取，数据处理，数据存储<h2 id="当主机无法承载，或无法维护共享队列时，主机的处理能力，成为了一个短板"><a href="#当主机无法承载，或无法维护共享队列时，主机的处理能力，成为了一个短板" class="headerlink" title="当主机无法承载，或无法维护共享队列时，主机的处理能力，成为了一个短板"></a>当主机无法承载，或无法维护共享队列时，主机的处理能力，成为了一个短板</h2></li>
+</ul>
+<blockquote>
+<p>redis介绍</p>
+</blockquote>
+<ul>
+<li>Redis 是非关系数据库，与其他数据库不同，Redis运行在内存中，因此处理数据的速度非常快</li>
+<li>Redis的结构灵活，提供队列，集合等多种存储结构，方便队列维护</li>
+</ul>
+<blockquote>
+<p>scrapy-Redis的去重</p>
+</blockquote>
+<ul>
+<li><p>多台主机可能爬取到相同的request，因此需要去重</p>
+</li>
+<li><p>使用redis中的集合，进行去重</p>
+</li>
+<li>Redis提供集合数据结构，在Redis集合中存储每个Request的指纹(加密)</li>
+<li>在从机向Request队列中加入Request前</li>
+<li>先验证Request的指纹是否已在集合中<ul>
+<li>即爬取过了的url，避免重复爬取<br>-如果不存在，则将request加入队列，并将指纹加入集合</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>实现该架构</p>
+</blockquote>
 
       
     </div>
@@ -387,6 +447,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/scrapy分布式/" rel="tag"># scrapy分布式</a>
+          
+        </div>
+      
 
       
       
@@ -396,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/19/mysql/" rel="next" title="mysql">
-                <i class="fa fa-chevron-left"></i> mysql
+              <a href="/2018/08/18/git-github/" rel="next" title="git-github">
+                <i class="fa fa-chevron-left"></i> git-github
               </a>
             
           </div>
@@ -406,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/20/databases/" rel="prev" title="databases">
-                databases <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/21/python-program/" rel="prev" title="python 爱不释手的编程语言">
+                python 爱不释手的编程语言 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -622,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#scrapy-redis-分布式爬虫"><span class="nav-number">1.</span> <span class="nav-text">scrapy-redis 分布式爬虫</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#当主机无法承载，或无法维护共享队列时，主机的处理能力，成为了一个短板"><span class="nav-number">1.1.</span> <span class="nav-text">当主机无法承载，或无法维护共享队列时，主机的处理能力，成为了一个短板</span></a></li></ol></li></ol></div>
             
 
           </div>

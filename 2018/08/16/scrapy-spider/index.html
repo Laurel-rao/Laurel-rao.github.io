@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="Spider spider类定义了如何爬取网站，包括怕去的动作，以及如何从网页中的内容提取结构化数据 spider类继承于Scrapy.spiders.Spider parse 函数 是解析网页并返回信息的函数，parse接受response，返回包括 Item对象，dict，Request的可迭代容器   在命令行 执行 crawl spider后执行的流程   命令 crawl 执行 == &amp;">
+<meta name="keywords" content="scrapy-spider模块">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/09/20/hello-world/index.html">
+<meta property="og:title" content="scrapy-spider">
+<meta property="og:url" content="http://yoursite.com/2018/08/16/scrapy-spider/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Spider spider类定义了如何爬取网站，包括怕去的动作，以及如何从网页中的内容提取结构化数据 spider类继承于Scrapy.spiders.Spider parse 函数 是解析网页并返回信息的函数，parse接受response，返回包括 Item对象，dict，Request的可迭代容器   在命令行 执行 crawl spider后执行的流程   命令 crawl 执行 == &amp;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-20T07:46:11.000Z">
+<meta property="og:updated_time" content="2018-09-20T07:46:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="scrapy-spider">
+<meta name="twitter:description" content="Spider spider类定义了如何爬取网站，包括怕去的动作，以及如何从网页中的内容提取结构化数据 spider类继承于Scrapy.spiders.Spider parse 函数 是解析网页并返回信息的函数，parse接受response，返回包括 Item对象，dict，Request的可迭代容器   在命令行 执行 crawl spider后执行的流程   命令 crawl 执行 == &amp;">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/20/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/16/scrapy-spider/"/>
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>Hello World | Hexo</title>
+  <title>scrapy-spider | Hexo</title>
   
 
 
@@ -284,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/scrapy-spider/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Laurel-rao">
@@ -301,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">scrapy-spider
               
             
           </h1>
@@ -326,12 +327,46 @@
                 
               
 
-              <time title="创建时间：2018-09-20 15:46:11" itemprop="dateCreated datePublished" datetime="2018-09-20T15:46:11+08:00">2018-09-20</time>
+              <time title="创建时间：2018-08-16 15:04:16" itemprop="dateCreated datePublished" datetime="2018-08-16T15:04:16+08:00">2018-08-16</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-20 15:46:15" itemprop="dateModified" datetime="2018-09-20T15:46:15+08:00">2018-09-20</time>
+              
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/爬虫框架/" itemprop="url" rel="index"><span itemprop="name">爬虫框架</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -360,15 +395,122 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="Spider"><a href="#Spider" class="headerlink" title="Spider"></a>Spider</h1><ul>
+<li>spider类定义了如何爬取网站，包括怕去的动作，以及如何从网页中的内容提取结构化数据</li>
+<li>spider类继承于Scrapy.spiders.Spider</li>
+<li>parse 函数 是解析网页并返回信息的函数，parse接受response，返回包括 Item对象，dict，Request的可迭代容器</li>
+</ul>
+<blockquote>
+<p>在命令行 执行 crawl spider后执行的流程</p>
+</blockquote>
+<ol>
+<li>命令 crawl 执行 == &gt; start_requests()执行，并且调用make_requests_from_url(url)</li>
+<li>make…(url) 获取start_requests传入的url，并返回request</li>
+<li>默认情况下，parse函数接收make…(url)传入的request，进行进一步的操作</li>
+<li>操作response解析数据，详见scrapy-selector</li>
+<li><p>获取数据，传入item的类中</p>
+<pre><code>from ..items import TencentspiderItem
+
+def parse(self, response):
+    ...
+    item = TencentspiderItem()
+    for description, url, location, release_time in \
+    zip(descriptions, urls, locations, release_times):
+        item[&apos;description&apos;] = description
+        item[&apos;url&apos;] = url
+        item[&apos;location&apos;] = location
+        item[&apos;release_time&apos;] = release_time
+        # print(item)
+        yield item
+</code></pre></li>
+</ol>
+<hr>
+<ol>
+<li><p>from_crawler 类方法 可获取settings.py中的配置</p>
+<pre><code>@classmethod
+def from_crawler(cls, crawler):
+    #  获取settings 的配置
+
+    mongo_uri = crawler.settings.get(&quot;MONGO_URI&quot;)
+    mongo_db = crawler.settings.get(&apos;MONGO_DB&apos;)
+    collection_name = crawler.settings.get(&apos;MONGO_COLLECTION&apos;)
+
+    return cls(mongo_uri, mongo_db, collection_name)
+</code></pre></li>
+<li><p>转换为get请求方式</p>
+<ul>
+<li>在spider类中重写start_requests方法，在请求时，将method 设置为 post</li>
+</ul>
+</li>
+<li><p>设置请求头</p>
+<ul>
+<li><p>在spider类设置custom_settings,覆盖 settings 中的 default</p>
+<pre><code>custom_settings= {&apos;DEFAULT_REQUEST_HEADERS&apos; : {
+  &apos;Accept&apos;: &apos;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&apos;,
+  &apos;Accept-Language&apos;: &apos;en&apos;,
+  &apos;User-Agent&apos;:&apos;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&apos;
+}}
+</code></pre></li>
+<li><p>或者在 <strong>init</strong>.py 中设置</p>
+<pre><code>def __init__(self):  
+self.headers = {  
+    &apos;Content-Type&apos;:&apos;application/x-www-form-urlencoded; charset=UTF-8&apos;,  
+    &apos;Accept-Encoding&apos;:&apos;gzip, deflate&apos;,  
+    &apos;User-Agent&apos;:&apos;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36&apos;  
+} 
+</code></pre></li>
+<li><p>在settings.py 中直接设置</p>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>        # Override the default request headers:
+        DEFAULT_REQUEST_HEADERS = {
+          &apos;Accept&apos;: &apos;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&apos;,
+          &apos;Accept-Language&apos;: &apos;en&apos;,
+          &apos;User-Agent&apos;:&apos;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&apos;
+        }
+
+- 再start_requests 中设置
+
+           def start_requests(self):
+        for url in self.start_urls:
+            yield scrapy.Request(url, headers={&quot;User-Agent&quot;: USER_AGENT})        
+</code></pre><ol start="4">
+<li><p>设置代理服务器</p>
+<pre><code>#1. 在settings 中添加代理服务器
+     IPPOOL=[  
+                {&quot;ipaddr&quot;:&quot;61.129.70.131:8080&quot;},
+            ] 
+# 在中间文件中设置代理服务器设置
+scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware
+#2. 在middlewares.py 中创建自己的middleware类
+#3. 在settings.py中添加中间件
+# 加上自动爬取的代理进行自动匹配
+
+# 或者使用crawlera
+</code></pre></li>
+<li><p>设置cookie</p>
+<pre><code># 重写start_requests方法添加cookie
+
+def start_requests(self):
+    for url in self.start_urls:        
+        yield Request(url, cookies={&apos;techbrood.com&apos;: &apos;true&apos;})
+</code></pre><blockquote>
+<p>spider中其他设置：</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><p>打印日志信息</p>
+<pre><code>self.log(message, level=)
+</code></pre></li>
+<li><p>当spider关闭时</p>
+<pre><code>self.close() # 默认被调用
+
+# 重写该方法实现一些关闭时的操作
+</code></pre></li>
+</ul>
 
       
     </div>
@@ -387,6 +529,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/scrapy-spider模块/" rel="tag"># scrapy-spider模块</a>
+          
+        </div>
+      
 
       
       
@@ -396,8 +544,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/19/mysql/" rel="next" title="mysql">
-                <i class="fa fa-chevron-left"></i> mysql
+              <a href="/2018/08/16/scrapy/" rel="next" title="scrapy">
+                <i class="fa fa-chevron-left"></i> scrapy
               </a>
             
           </div>
@@ -406,8 +554,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/20/databases/" rel="prev" title="databases">
-                databases <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/16/numpy/" rel="prev" title="numpy">
+                numpy <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -622,7 +770,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spider"><span class="nav-number">1.</span> <span class="nav-text">Spider</span></a></li></ol></div>
             
 
           </div>

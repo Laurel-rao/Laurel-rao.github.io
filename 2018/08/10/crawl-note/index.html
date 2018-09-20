@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="获取动态页面 网页通过动态加载信息 无法直接通过html页面直接获取信息时 通过向服务器发送请求获取信息 通过浏览器帮助获取信息      服务器与爬虫交互时，使用都是字节串的形式 需要通过urlencode() 对url后再传递给服务器 接收到服务器的信息后，需要对信息进行解码 该网站可进行 解码 和 编码 的操作 http://tool.chinaz.com/tools/urlencode.a">
+<meta name="keywords" content="python爬虫 selenium库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/09/20/hello-world/index.html">
+<meta property="og:title" content="crawl_note">
+<meta property="og:url" content="http://yoursite.com/2018/08/10/crawl-note/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="获取动态页面 网页通过动态加载信息 无法直接通过html页面直接获取信息时 通过向服务器发送请求获取信息 通过浏览器帮助获取信息      服务器与爬虫交互时，使用都是字节串的形式 需要通过urlencode() 对url后再传递给服务器 接收到服务器的信息后，需要对信息进行解码 该网站可进行 解码 和 编码 的操作 http://tool.chinaz.com/tools/urlencode.a">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-20T07:46:11.000Z">
+<meta property="og:updated_time" content="2018-09-20T07:46:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="crawl_note">
+<meta name="twitter:description" content="获取动态页面 网页通过动态加载信息 无法直接通过html页面直接获取信息时 通过向服务器发送请求获取信息 通过浏览器帮助获取信息      服务器与爬虫交互时，使用都是字节串的形式 需要通过urlencode() 对url后再传递给服务器 接收到服务器的信息后，需要对信息进行解码 该网站可进行 解码 和 编码 的操作 http://tool.chinaz.com/tools/urlencode.a">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/20/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/10/crawl-note/"/>
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>Hello World | Hexo</title>
+  <title>crawl_note | Hexo</title>
   
 
 
@@ -284,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/10/crawl-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Laurel-rao">
@@ -301,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">crawl_note
               
             
           </h1>
@@ -326,12 +327,46 @@
                 
               
 
-              <time title="创建时间：2018-09-20 15:46:11" itemprop="dateCreated datePublished" datetime="2018-09-20T15:46:11+08:00">2018-09-20</time>
+              <time title="创建时间：2018-08-10 18:27:17" itemprop="dateCreated datePublished" datetime="2018-08-10T18:27:17+08:00">2018-08-10</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-09-20 15:46:09" itemprop="dateModified" datetime="2018-09-20T15:46:09+08:00">2018-09-20</time>
+              
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/爬虫笔记/" itemprop="url" rel="index"><span itemprop="name">爬虫笔记</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -360,15 +395,161 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="获取动态页面"><a href="#获取动态页面" class="headerlink" title="获取动态页面"></a>获取动态页面</h1><ul>
+<li>网页通过动态加载信息</li>
+<li>无法直接通过html页面直接获取信息时<ul>
+<li>通过向服务器发送请求获取信息</li>
+<li>通过浏览器帮助获取信息</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>服务器与爬虫交互时，使用都是字节串的形式</li>
+<li>需要通过urlencode() 对url后再传递给服务器</li>
+<li><p>接收到服务器的信息后，需要对信息进行解码</p>
+<pre><code>该网站可进行 解码 和 编码 的操作
+http://tool.chinaz.com/tools/urlencode.aspx
+</code></pre></li>
+</ul>
+<blockquote>
+<p>get方法</p>
+</blockquote>
+<pre><code>将参数拼接到目标url的后面
+from urllib import parse
+\# 以字典的形式保存参数
+a = {&apos;a&apos;:12, &apos;b&apos;:&apos;编码&apos;}
+ss = parse.urlencode(a)
+\# ss = &apos;a=12&amp;b=%E7%BC%96%E7%A0%81&apos;
+print(ss)
+</code></pre><blockquote>
+<p>post方法</p>
+<ul>
+<li>在请求时，将数据加入请求体中<pre><code>from urllib import request
+rep = request.Request(url, data, headers, method=post)
+response = request.urlopen(req)
+</code></pre></li>
+</ul>
+</blockquote>
+<ul>
+<li>将数据转化为bytes,post请求需要数据为bytes<pre><code>data = bytes(parse.urlencode({&apos;data&apos;:value}))
+\# data = parse.urlencode({&apos;data&apos;:value}).encode()
+</code></pre></li>
+</ul>
+<blockquote>
+<p>selenium 库爬取动态页面</p>
+</blockquote>
+<ul>
+<li>selenium 常用于自动化测试</li>
+<li>PhantomJS 无界面的Firefox浏览器，节省资源</li>
+</ul>
+<blockquote>
+<p>模拟用户操作浏览器获取信息</p>
+</blockquote>
+<ol>
+<li>下载chromedriver ，在Python与浏览器之间搭建一个桥梁<ul>
+<li>geckodriver—-firefox浏览器</li>
+</ul>
+</li>
+<li>将chromedriver放入python解释器统一路径</li>
+<li>进行操作</li>
+<li><p>关闭浏览器</p>
+<ul>
+<li>浏览器使用完毕后，需要关闭，此时python给浏览器发送一个信号</li>
+<li><p>但浏览器在运行其他任务时，不会关闭，在必要的时候kill 此进程</p>
+<pre><code>from selenium import webdriver
+
+\# 创建chrome对象
+driver = webdriver.Chrome()
+driver.get(&apos;http://cn.bing.com&apos;)
+a = driver.find_element_by_id(&apos;sb_form_q&apos;).send_keys(&apos;python爬虫&apos;)
+b = driver.find_element_by_id(&apos;sb_form_go&apos;).click()
+\# a = driver.find_element_by_xpath(&apos;//[@id=&quot;sb_form_q&quot;]&apos;)
+print(driver.page_source)
+
+driver.quit()
+driver.close()
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>在实际应用场景中，使用selenium 方法消耗时间太多<ul>
+<li>浏览器需要加载太多资源包，而我们并不需要</li>
+</ul>
+</li>
+<li><p>浏览器启动需要大量资源，且需要另外的管理方式</p>
+<ul>
+<li>不到万不得已，尽量不使用此方法</li>
+</ul>
+</li>
+<li><p>对浏览器进行基础设置</p>
+<pre><code>\# 加启动配置
+\# 忽略‘Chrome正在受到自动软件的控制’
+option = webdriver.ChromeOptions()
+option.add_argument(&apos;disable-infobars&apos;)
+return webdriver.Chrome(chrome_options = option,desired_capabilities = None)
+\# 打开chrome浏览器
+driver = webdriver.Chrome(chrome_options=option)
+driver.get(&quot;https://www.baidu.com&quot;) 
+
+二、启动浏览器并加载浏览器的静默模式，让它在后台运行。用headless
+
+from selenium import webdriver
+\# 加启动配置
+option = webdriver.ChromeOptions()
+option.add_argument(&apos;headless&apos;)
+</code></pre></li>
+</ul>
+<blockquote>
+<p>常用api</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>page_source</td>
+<td>获取当前 html文本</td>
+</tr>
+<tr>
+<td>title</td>
+<td>获取</td>
+</tr>
+<tr>
+<td>current_url</td>
+<td>当前网页url</td>
+</tr>
+<tr>
+<td>get_cookie()</td>
+<td>获取当前的cookie</td>
+</tr>
+<tr>
+<td>get_cookies()</td>
+<td>获取当前的cookies</td>
+</tr>
+<tr>
+<td>delete_cookie &amp; delete_all_cookies()</td>
+<td>删除cookies</td>
+</tr>
+<tr>
+<td>set_page_load_timeout()</td>
+<td>设置网页超时</td>
+</tr>
+<tr>
+<td>exectue_script()</td>
+<td>同步指定一段javascript</td>
+</tr>
+<tr>
+<td>exectue_async_script()</td>
+<td>异步指定一段javascript</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -387,6 +568,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/python爬虫-selenium库/" rel="tag"># python爬虫 selenium库</a>
+          
+        </div>
+      
 
       
       
@@ -396,8 +583,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/19/mysql/" rel="next" title="mysql">
-                <i class="fa fa-chevron-left"></i> mysql
+              <a href="/2018/08/09/tornado/" rel="next" title="服务器框架tornado笔记">
+                <i class="fa fa-chevron-left"></i> 服务器框架tornado笔记
               </a>
             
           </div>
@@ -406,8 +593,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/20/databases/" rel="prev" title="databases">
-                databases <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/11/beautisoup-xpath-re/" rel="prev" title="beautifulsoup & xpath & re">
+                beautifulsoup & xpath & re <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -622,7 +809,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取动态页面"><span class="nav-number">1.</span> <span class="nav-text">获取动态页面</span></a></li></ol></div>
             
 
           </div>

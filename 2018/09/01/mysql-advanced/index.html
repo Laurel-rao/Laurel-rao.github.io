@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 视图 视图介绍  视图是一种抽象行为，将查询的结果作为一张表进行存储，叫做视图 视图是一种面向函数的行为，将经常查询的表格创建视图存储下来 可以提升查询的效率，因为视图已经在缓存层面进行存储，所以不需要解析树解析 减少一大段的sql 语句的编写，减少出错的概率     查看视图 show table status where comment = &amp;apos;view&amp;apos;；  创建视图">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-20T07:46:13.000Z">
+<meta property="og:updated_time" content="2018-10-16T04:02:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql-advanced">
 <meta name="twitter:description" content="1. 视图 视图介绍  视图是一种抽象行为，将查询的结果作为一张表进行存储，叫做视图 视图是一种面向函数的行为，将经常查询的表格创建视图存储下来 可以提升查询的效率，因为视图已经在缓存层面进行存储，所以不需要解析树解析 减少一大段的sql 语句的编写，减少出错的概率     查看视图 show table status where comment = &amp;apos;view&amp;apos;；  创建视图">
@@ -344,7 +344,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-20 15:46:13" itemprop="dateModified" datetime="2018-09-20T15:46:13+08:00">2018-09-20</time>
+                <time title="修改时间：2018-10-16 12:02:02" itemprop="dateModified" datetime="2018-10-16T12:02:02+08:00">2018-10-16</time>
               
             
           </span>
@@ -419,7 +419,54 @@
 <pre><code>select * from table where id = (select * from xxx);
 </code></pre></li>
 </ul>
-<h1 id="2-存储过程"><a href="#2-存储过程" class="headerlink" title="2. 存储过程"></a>2. 存储过程</h1><h1 id="3-预处理，范式规范"><a href="#3-预处理，范式规范" class="headerlink" title="3. 预处理，范式规范"></a>3. 预处理，范式规范</h1><h1 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h1>
+<h1 id="2-存储过程"><a href="#2-存储过程" class="headerlink" title="2. 存储过程"></a>2. 存储过程</h1><h1 id="3-预处理，范式规范"><a href="#3-预处理，范式规范" class="headerlink" title="3. 预处理，范式规范"></a>3. 预处理，范式规范</h1><h1 id="4-查询"><a href="#4-查询" class="headerlink" title="4. 查询"></a>4. 查询</h1><h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><ol>
+<li><p>定义</p>
+<ol>
+<li>嵌套在其他查询中的查询， 通常使用 where 语句 和 in 搭配()使用</li>
+<li>当嵌套层数过深时，查询性能会低</li>
+</ol>
+</li>
+<li><p>使用举例</p>
+<pre><code>select * from a where age in (select age from b);
+</code></pre></li>
+</ol>
+<h2 id="联结"><a href="#联结" class="headerlink" title="联结"></a>联结</h2><h1 id="5-常用函数"><a href="#5-常用函数" class="headerlink" title="5. 常用函数"></a>5. 常用函数</h1><ol>
+<li><p>按照拼音排序 （convert）</p>
+<pre><code>order by convert(name using gbk)；
+</code></pre></li>
+<li><p>查询时拼接字段(concat)，英文(concatenate)</p>
+<pre><code>select concat(name, &quot;--&quot;, age) from ...
+</code></pre></li>
+<li><p>使用正则表达式进行匹配(regexp)</p>
+<ol>
+<li>使用说明<ol>
+<li>正则表达式，相较于模糊查询 like，功能更强大，但性能较低</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>2. 使用举例
+
+```
+where name regexp &quot;bob|maria&quot;;
+```    
+3. 正则语法
+    1. “a|b” 表示  or ,a or b
+    2. [0,1,2] == [0-2], 表示其中任意一个
+    3. &quot;a{1,2}&quot;, 表示 前面字符的数量， 一个或两个a
+    4. “a{1, }”, 表示 前面字符至少有一个
+    5. . 表示除空格字符外的所有字符  
+    6. * 表示前面字符数量 为 0 或 n个
+    7. ? 表示前面字符数量 为 0 或 1个 等同于{ ,1}
+    8. + 表示前面字符数量 为 1 或 n个 等同于{1, }
+    9. \\ 表示 转义字符 \\, 查找&quot;\&quot; 应表示为 “\\\” 
+</code></pre><ol start="4">
+<li><p>将时间戳转换为 字符串形式（ from_unixtime）</p>
+<pre><code>update a set a_time = from_unixtime(b_time);
+</code></pre></li>
+</ol>
+
       
     </div>
 
@@ -534,7 +581,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -680,7 +727,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-视图"><span class="nav-number">1.</span> <span class="nav-text">1. 视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-存储过程"><span class="nav-number">2.</span> <span class="nav-text">2. 存储过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-预处理，范式规范"><span class="nav-number">3.</span> <span class="nav-text">3. 预处理，范式规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4"><span class="nav-number">4.</span> <span class="nav-text">4.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-视图"><span class="nav-number">1.</span> <span class="nav-text">1. 视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-存储过程"><span class="nav-number">2.</span> <span class="nav-text">2. 存储过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-预处理，范式规范"><span class="nav-number">3.</span> <span class="nav-text">3. 预处理，范式规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-查询"><span class="nav-number">4.</span> <span class="nav-text">4. 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询"><span class="nav-number">4.1.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联结"><span class="nav-number">4.2.</span> <span class="nav-text">联结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-常用函数"><span class="nav-number">5.</span> <span class="nav-text">5. 常用函数</span></a></li></ol></div>
             
 
           </div>

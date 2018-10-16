@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="框架介绍框架运行流程 中间件处理request 路由系统匹配request中的url 进入中间件的process_view 处理 处理后分发到相应的view view 完成 逻辑处理 与 ORM 数据库操作 process_response 对 view 发出的 response 进行加工 返回完整的response  框架主要划分   名称 功能 描述     路由系统 匹配url，并进行分发">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-30T08:09:44.000Z">
+<meta property="og:updated_time" content="2018-10-12T01:14:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="django">
 <meta name="twitter:description" content="框架介绍框架运行流程 中间件处理request 路由系统匹配request中的url 进入中间件的process_view 处理 处理后分发到相应的view view 完成 逻辑处理 与 ORM 数据库操作 process_response 对 view 发出的 response 进行加工 返回完整的response  框架主要划分   名称 功能 描述     路由系统 匹配url，并进行分发">
@@ -344,7 +344,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-30 16:09:44" itemprop="dateModified" datetime="2018-09-30T16:09:44+08:00">2018-09-30</time>
+                <time title="修改时间：2018-10-12 09:14:17" itemprop="dateModified" datetime="2018-10-12T09:14:17+08:00">2018-10-12</time>
               
             
           </span>
@@ -485,6 +485,148 @@ DATABASES = []         # 设置数据库
 </li>
 </ol>
 </li>
+</ol>
+<h1 id="Models-使用"><a href="#Models-使用" class="headerlink" title="Models 使用"></a>Models 使用</h1><h2 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h2><h3 id="配置mysql数据库"><a href="#配置mysql数据库" class="headerlink" title="配置mysql数据库"></a>配置mysql数据库</h3><ol>
+<li><p>在 主目录下的 <strong>init</strong>.py 文件中, 安装 mysql服务，否则报错</p>
+<pre><code>import pymysql
+pymysql.install_as_MySQLdb()
+</code></pre></li>
+<li><p>在数据库中创建 一个库 web, sql 语句</p>
+<pre><code>create database web default charset &quot;utf8&quot; collate utf8_general_ci;
+# collate 用来定义排序规则 ci标识不区分大小写 cs标识区分大小写
+</code></pre></li>
+<li><p>在 settings.py 文件中，设置mysql</p>
+<pre><code>DATABASES = {
+    &apos;default&apos; : {
+        &apos;ENGINE&apos;   : &apos;django.db.backends.mysql&apos;,  # 数据库种类
+        &apos;NAME&apos;     : &quot;web&quot;,                # 数据库库名
+        &apos;USER&apos;     : &quot;root&quot;,
+        &apos;PASSWORD&apos; : &quot;123456&quot;,
+        &apos;HOST&apos;     : &quot;ubs_db&quot;,
+        &apos;PORT&apos;     : &quot;3306&quot;,
+        &apos;OPTIONS&apos;  : {
+            &apos;autocommit&apos;: True,
+        }
+    },
+}
+</code></pre></li>
+<li><p>在models 创建字段, 字段参考(<a href="https://docs.djangoproject.com/en/2.1/ref/models/fields/" target="_blank" rel="noopener">字段及参数</a>)</p>
+<pre><code>from django.db import models
+class xxxModel(models.Model):
+    name = models.CharField(xxx)
+</code></pre></li>
+<li><p>将 model 类 转移到 数据库(完成自动创建表，修改表字段)， 会在app中创建一个migrations 的文件夹</p>
+<pre><code>python manage.py makemigrations
+python manage.py migrate
+</code></pre></li>
+<li><p>操作完毕</p>
+</li>
+</ol>
+<h2 id="操作数据库"><a href="#操作数据库" class="headerlink" title="操作数据库"></a>操作数据库</h2><ol>
+<li><p>使用原生ORM操作</p>
+<ol>
+<li><p>queryset类 方法</p>
+<ul>
+<li><p>filter() # 一般查找时，忽略大小写，在前面加 i</p>
+<ul>
+<li>__lt        # 小于</li>
+<li>__gt            # 大于</li>
+<li>__lte       # 小于等于</li>
+<li>__gte       # 大于等于</li>
+<li>__exact     # 意义不大，默认为此方式 </li>
+<li>__iexact    # 忽略大小写</li>
+<li>__isnull    # 是否为空</li>
+<li>__regex     # 匹配数据库正则表达式</li>
+<li>__contains  # 模糊查找  与 where like “%xx%” 相似</li>
+<li>__startwith # 判断开头  与 where like “xx%” 相似</li>
+<li>__endwith   # 判断结尾  与 where like “%xx” 相似</li>
+<li><p>__in        # 判断在列表中</p>
+<pre><code>ORM: Entry.objects.filter(id__in=[1, 3, 4])
+SQL: select * from Entry where id in (1, 3, 4);
+
+ORM: Entry.objects.filter(id__in=&quot;abc&quot;)
+SQL: select * from Entry where id in (&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
+</code></pre></li>
+<li>__range     # 范围判断</li>
+</ul>
+</li>
+<li>filter(时间判断 参数)<ul>
+<li>__year</li>
+<li><code>__year__lt</code> # 在日期的上面可以再做大小判断</li>
+<li>__month</li>
+<li>__day</li>
+<li>__week     # ISO-8601返回周数（1-52或53</li>
+<li>__time</li>
+<li>__hour</li>
+<li>__minute</li>
+<li>__second</li>
+<li></li>
+</ul>
+</li>
+<li>exclude()</li>
+<li>count()</li>
+<li>values()</li>
+<li>values_list() </li>
+<li>aggregate()   # 聚合</li>
+<li>exists()      # 判断queryset是否有值</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>使用manager</p>
+<ol>
+<li>默认manager 为 objects</li>
+<li><p>可在models中自定义manager名, objects 变为不可用</p>
+<pre><code>class xxxModel(models.Model):
+    haha = models.Manager()
+</code></pre></li>
+<li><p>自定义manager方法</p>
+<ol>
+<li><p>创建自己的manager类</p>
+<pre><code>from django.db import models
+class myManager(models.Manager):
+    def get_count():
+        from django.db import connection
+        with connection.cursor() as cursor:
+            cursor.execute(&quot;&quot;&quot;
+                select * from xxx
+            &quot;&quot;&quot;)
+            print(cursor.fetchall())
+            print(cursor.fetchone())
+
+# 应用该manager
+class xxxModel(models.Model):
+    haha = myManager()
+</code></pre></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>2. 使用举例： models.自定义manager.自定义方法()
+
+        xxx.haha.get_count()
+
+3. 一个models 可存在多个 manager
+
+        class xxxModel(models.Model):
+            haha = models.Manager()
+            objects = models.Manager()
+
+        # 使用举例， 以下两种情况都可以实现
+
+        xxx.objects.all()
+        xxx.haha.all()
+</code></pre><ol start="3">
+<li><p>使用原生sql</p>
+</li>
+<li><p>使用raw方法</p>
+</li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>queryset 不可作为 JsonResponse直接返回，需要转换为字典或列表</li>
+<li>使用 queryset.raw 操作sql 时，无法找到方法去返回对象的部分字段</li>
+<li></li>
 </ol>
 <h1 id="Django主要文件介绍"><a href="#Django主要文件介绍" class="headerlink" title="Django主要文件介绍"></a>Django主要文件介绍</h1><p>views.py(自定义处理函数)</p>
 <p>wsgi.py</p>
@@ -804,13 +946,19 @@ DATABASES = []         # 设置数据库
             import pymysql
             pymysql.install_as_MYSQLdb()
 4.数据库的同步操作
+
     1. ./manage.py makemigrations
-        作用 : 将每个应用下的 models.py  
-        文件生成一个数据库的中间文件, 
-        并保存在 migrations 目录中
+        1. 作用 : 将每个应用下的 models.py  
+        2. 文件生成一个数据库的中间文件
+        3. 并保存在 migrations 目录中
     2. ./manage.py migrate
         作用 : 将每个应用下的migration 目录中的
         中间文件同步到数据库中
+    3. migrations 文件，主要是记录表中的差异变化，而不是全部记录
+        1. 注意， 当线上与线下两个版本共存时，migrations文件需要实时共享，保证文件的完全一致
+        2. 且需要及时 执行数据导入(migrate)操作
+        3. 否则会在 ORM操作时 产生错误
+
 5.编写Models
     1.注意
         1. Models中的每个class 都称为 模型类(Model类)
@@ -845,7 +993,7 @@ DATABASES = []         # 设置数据库
             1. BooleanField() #bool 类型
             2. CharField()
             3. DateFiels()
-            4. DateTimeField()
+            4. DateTimeField() 
             5. DecimalField()
             6. EmailField() # 存电子邮件 - varvhar
             7. FloatField()
@@ -881,7 +1029,9 @@ DATABASES = []         # 设置数据库
     6. 通过数据库自动导出 Models
         ./manage.py inspectdb &gt; 文件名.py
 2. 模型中的 CRUD 
-    1.通过 ORM 向 DB中增加数据
+
+
+    1. 通过 ORM 向 DB中增加数据
         1.Entry.objects.create(属性 = 值, 属性 = 值)
             Entry: 具体要操作的 model类
             eg:
@@ -898,95 +1048,101 @@ DATABASES = []         # 设置数据库
 
             obj = Entry(**dic)
             obj.save()
-2.查询操作(重难点)
-    通过 Entry.objects 调用查询接口
-    1. 基本查询操作
-        语法: all()
-        select * from Entry
-        op = Entry.objects.all()
-        返回 : QuerySet
-        &lt;QuerySet [&lt;Author: Author object&gt;]&gt;
-        提取字段值: op.字段名,循环遍历
-    2.查询值定列
-        语法: values (&apos;列1&apos;, &apos;列2&apos;, ...)
-        用法: Entry.objects.values(&quot;列1&quot;, &quot;列2&quot;)
-        返回: QuerySet 字典对象(使用i[&apos;names&apos;]提取)
-        注意: 
-            values()可用在所有的返回查询结果集的方法的后面
-        eg: 
-            Author.objects.values(&apos;names&apos;, &apos;age&apos;)
-            等同于 select names,age from Author
-    3.查询值定列
-        语法 : values_list(&apos;列1&apos;, &apos;列2&apos;)
-        用法: Entry.objects.values(&quot;列1&quot;, &quot;列2&quot;)
-        返回: QuerySet 元组对象 (使用下标i[0]提取)
-        &apos;&lt;QuerySet [(&apos;朱自清&apos;, 85), (&apos;老舍&apos;, 58), (&apos;莫言&apos;, 59)]&gt;&apos;
-    4.排序函数
-        语法: order_by(&apos;-列1&apos;, &apos;列2&apos;)
-        用法: Entry.objects.order_by(&apos;-列1&apos;, &apos;列2&apos;)
-            默认的排序规则是升序
-            如果需要降序 ,在序号名前加上 &apos;-&apos;
-    5.exclude()
-        条件取反
-        Entry.objects.exclude(id= 3， name = john)
-        select * from Author where not(id = 3 , name = john)
-    6.根据条件查询部分行数据(重难点)
-        filter(参数)
-        Entry.objects.filter(参数)
-        1.使用 Entry 中的属性作为查询参数
-            多个参数的话 , 使用 &apos;,&apos; 隔开 
-            Author.objects.filter(id = 1 , names = &apos;莫言&apos;)
-            where  id=1 and names = &apos;莫言&apos;
-        2. 通过Field Lookup (查询表达式)完成复杂条件的构建
-            查询表达式 : 每个查询表达式 都是一个独立的查询条件
-            可以用在所有的有查询条件的位置处  &apos;__&apos; 双下划线
-            1. __exact
-                精确查询,等值判断
-                Entry.objects.filter(属性__exact = 值)
-                ex:
-                    Author.objects.filter(\
-                        email__exact= None)
-                    where email is null
-            2. __contains
-                作用: 查询包含指定关键字的记录
-                ex: Author.objects.filter(\
-                    name__contains = &apos;ao&apos;)
-                where name like &apos;%ao%&apos;
-            3. __lt __gt __lte __gte
-                小于 大于 小于等于 大于等于
-            4. __startswith
-                where name like &apos;nam%&apos;
-            5. __endswith
-                where name like &apos;%nam&apos;
-    7.查询一条记录
-        Entry.objects.get()
-        不为一条记录时报错
-    8.删除和修改
-        1. 修改单个数据
-            1. 通过 get () 得到要修改的实体对象
-            2.通过实体对象的属性修改属性值
-            3.再通过实体对象的save()保存到数据库
-            eg:
-                au = Author.objetcs.get(id= 1)
-                au.names = &apos;老舍&apos;
-                au.age = 45
-                au.save()
+    2. 查询操作(重难点)
 
-        2. 批量修改数据
-            调用查询结果集的 update() 完成批量修改
+        - 通过 Entry.objects 调用查询接口
+        1. 基本查询操作
+            语法: all()
+            select * from Entry
+            op = Entry.objects.all()
+            返回 : QuerySet
+            &lt;QuerySet [&lt;Author: Author object&gt;]&gt;
+            提取字段值: op.字段名,循环遍历
+        2. 查询值定列
+            语法: values (&apos;列1&apos;, &apos;列2&apos;, ...)
+            用法: Entry.objects.values(&quot;列1&quot;, &quot;列2&quot;)
+            返回: QuerySet 字典对象(使用i[&apos;names&apos;]提取)
+            注意: 
+                values()可用在所有的返回查询结果集的方法的后面
+            eg: 
+                Author.objects.values(&apos;names&apos;, &apos;age&apos;)
+                等同于 select names,age from Author
+        3. 查询值定列
+            语法 : values_list(&apos;列1&apos;, &apos;列2&apos;)
+            用法: Entry.objects.values(&quot;列1&quot;, &quot;列2&quot;)
+            返回: QuerySet 元组对象 (使用下标i[0]提取)
+            &apos;&lt;QuerySet [(&apos;朱自清&apos;, 85), (&apos;老舍&apos;, 58), (&apos;莫言&apos;, 59)]&gt;&apos;
+        4. 排序函数
+            语法: order_by(&apos;-列1&apos;, &apos;列2&apos;)
+            用法: Entry.objects.order_by(&apos;-列1&apos;, &apos;列2&apos;)
+                默认的排序规则是升序
+                如果需要降序 ,在序号名前加上 &apos;-&apos;
+        5. exclude()
+            条件取反
+            Entry.objects.exclude(id= 3， name = john)
+            select * from Author where not(id = 3 , name = john)
+        6. 根据条件查询部分行数据(重难点)
+            filter(参数)
+            Entry.objects.filter(参数)
+            1.使用 Entry 中的属性作为查询参数
+                多个参数的话 , 使用 &apos;,&apos; 隔开 
+                Author.objects.filter(id = 1 , names = &apos;莫言&apos;)
+                where  id=1 and names = &apos;莫言&apos;
+            2. 通过Field Lookup (查询表达式)完成复杂条件的构建
+                查询表达式 : 每个查询表达式 都是一个独立的查询条件
+                可以用在所有的有查询条件的位置处  &apos;__&apos; 双下划线
+                1. __exact
 
-            Entry.objects.all().update(属性 = 值)
-            eg : 
-                Author.objects.all().update(age = 75)
-        3. 删除数据
-            调用实体对象 / 查询结果集的 delete () 即可
-            1. 删除单个对象
-                obj = Author.objects.get(id =1 )
-                obj.delete()
-                obj.save()
-            2. 删除多个对象
+                    精确查询,等值判断
+                    Entry.objects.filter(属性__exact = 值)
+                    等同于 Entry.objects.filter(属性=值)
+                    ORM: Author.objects.filter(email__exact=None)
+                    SQL: where email is null
+                2. __contains
 
-                Author.objects.all().delete()
+                    作用: 查询包含指定关键字的记录
+                    ORM: Author.objects.filter(name__contains = &apos;ao&apos;)
+                    SQL: where name like &apos;%ao%&apos;
+                3. __lt __gt __lte __gte
+
+                    小于 大于 小于等于 大于等于
+                4. __startswith
+
+                    where name like &apos;nam%&apos;
+                5. __endswith
+
+                    where name like &apos;%nam&apos;
+
+        7. 查询一条记录
+
+            Entry.objects.get() # 查询不到或者不为一条记录时报错
+
+        8. 删除和修改
+            1. 修改单个数据
+                1. 通过 get () 得到要修改的实体对象
+                2.通过实体对象的属性修改属性值
+                3.再通过实体对象的save()保存到数据库
+                eg:
+                    au = Author.objetcs.get(id= 1)
+                    au.names = &apos;老舍&apos;
+                    au.age = 45
+                    au.save()
+
+            2. 批量修改数据
+                调用查询结果集的 update() 完成批量修改
+
+                Entry.objects.all().update(属性 = 值)
+                eg : 
+                    Author.objects.all().update(age = 75)
+            3. 删除数据
+                调用实体对象 / 查询结果集的 delete () 即可
+                1. 删除单个对象
+                    obj = Author.objects.get(id =1 )
+                    obj.delete()
+                    obj.save()
+                2. 删除多个对象
+
+                    Author.objects.all().delete()
 </code></pre><p>1.转发 与 重定向</p>
 <pre><code>1. 转发
 2. 重定向
@@ -1202,14 +1358,19 @@ DATABASES = []         # 设置数据库
         作为参数， 在调用视图时自动传入
 
     2. HttpRequest中的主要内容
-        1.request。scheme:请求协议
-        2.request。body：请求主体
-        3.request。path：请求路径
-        4.request。get_host(): 请求主机/域名
-        5.request。method：请求方法
-        6.request。GET ： get请求方式提交的数据
-        7.request。POST ： post请求方式提交的数据
-        8.request。COOKIES ： cookies
+        1.request.scheme:请求协议
+        2.request.body：请求主体
+        3.request.path：请求路径
+        4.request.get_host(): 请求主机/域名
+        5.request.method：请求方法
+        6.request.GET ： get请求方式提交的数据
+        7.request.POST ： post请求方式提交的数据
+        8.request.COOKIES ： cookies
+    3. 获取 querydict 中的 类似多选框，一个键对应一个列表 # &lt;QueryDict {&apos;a&apos;:[&quot;a&quot;, &quot;b&quot;]}&gt;
+        1. 如果使用一个 querydict.get(&apos;a&apos;)
+            1. 只能获取一个值, &quot;b&quot;
+        2. 使用querydict.getlist(&quot;a&quot;)
+            1. 可以获取到 列表 [&quot;a&quot;, &quot;b&quot;]
 </code></pre><p>request中的变量</p>
 <pre><code>[&apos;COOKIES&apos;, &apos;FILES&apos;, &apos;GET&apos;, &apos;META&apos;, &apos;POST&apos;, &apos;__class__&apos;, &apos;__delattr__&apos;, &apos;__dict__&apos;, &apos;__dir__&apos;, &apos;__doc__&apos;, &apos;__eq__&apos;, &apos;__format__&apos;, &apos;__ge__&apos;, &apos;__getattribute__&apos;, &apos;__gt__&apos;, &apos;__hash__&apos;, &apos;__init__&apos;, &apos;__iter__&apos;, &apos;__le__&apos;, &apos;__lt__&apos;, &apos;__module__&apos;, &apos;__ne__&apos;, &apos;__new__&apos;, &apos;__reduce__&apos;, &apos;__reduce_ex__&apos;, &apos;__repr__&apos;, &apos;__setattr__&apos;, &apos;__sizeof__&apos;, &apos;__str__&apos;, &apos;__subclasshook__&apos;, &apos;__weakref__&apos;, &apos;_encoding&apos;, &apos;_get_post&apos;, &apos;_get_raw_host&apos;, &apos;_get_scheme&apos;, &apos;_initialize_handlers&apos;, &apos;_load_post_and_files&apos;, &apos;_mark_post_parse_error&apos;, &apos;_messages&apos;, &apos;_post_parse_error&apos;, &apos;_read_started&apos;, &apos;_set_post&apos;, &apos;_stream&apos;, &apos;_upload_handlers&apos;, &apos;body&apos;, &apos;build_absolute_uri&apos;, &apos;close&apos;, &apos;content_params&apos;, &apos;content_type&apos;, &apos;csrf_processing_done&apos;, &apos;encoding&apos;, &apos;environ&apos;, &apos;get_full_path&apos;, &apos;get_host&apos;, &apos;get_port&apos;, &apos;get_raw_uri&apos;, &apos;get_signed_cookie&apos;, &apos;is_ajax&apos;, &apos;is_secure&apos;, &apos;method&apos;, &apos;parse_file_upload&apos;, &apos;path&apos;, &apos;path_info&apos;, &apos;read&apos;, &apos;readline&apos;, &apos;readlines&apos;, &apos;resolver_match&apos;, &apos;scheme&apos;, &apos;session&apos;, &apos;upload_handlers&apos;, &apos;user&apos;, &apos;xreadlines&apos;]
 </code></pre><p>8.使用forms 模块处理表单</p>
@@ -1469,7 +1630,7 @@ widget 部件
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1615,7 +1776,7 @@ widget 部件
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#框架介绍"><span class="nav-number">1.</span> <span class="nav-text">框架介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#框架运行流程"><span class="nav-number">1.1.</span> <span class="nav-text">框架运行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#框架主要划分"><span class="nav-number">1.2.</span> <span class="nav-text">框架主要划分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速开始"><span class="nav-number">2.</span> <span class="nav-text">快速开始</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django主要文件介绍"><span class="nav-number">3.</span> <span class="nav-text">Django主要文件介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由匹配"><span class="nav-number">4.</span> <span class="nav-text">路由匹配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django中的应用"><span class="nav-number">5.</span> <span class="nav-text">Django中的应用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#框架介绍"><span class="nav-number">1.</span> <span class="nav-text">框架介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#框架运行流程"><span class="nav-number">1.1.</span> <span class="nav-text">框架运行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#框架主要划分"><span class="nav-number">1.2.</span> <span class="nav-text">框架主要划分</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速开始"><span class="nav-number">2.</span> <span class="nav-text">快速开始</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Models-使用"><span class="nav-number">3.</span> <span class="nav-text">Models 使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#连接数据库"><span class="nav-number">3.1.</span> <span class="nav-text">连接数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置mysql数据库"><span class="nav-number">3.1.1.</span> <span class="nav-text">配置mysql数据库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作数据库"><span class="nav-number">3.2.</span> <span class="nav-text">操作数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">3.3.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django主要文件介绍"><span class="nav-number">4.</span> <span class="nav-text">Django主要文件介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由匹配"><span class="nav-number">5.</span> <span class="nav-text">路由匹配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django中的应用"><span class="nav-number">6.</span> <span class="nav-text">Django中的应用</span></a></li></ol></div>
             
 
           </div>

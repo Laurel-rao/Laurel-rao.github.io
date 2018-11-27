@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Flask,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="了解 Flaskflask搭建示例from flask import Flask  app = Flask(__name__)  # 路由 @app.route(&amp;apos;/&amp;apos;) def hello_world():     return &amp;apos;Hello world&amp;apos;  if __name__ == &amp;apos;__main__&amp;apos;:     app.run(">
+<meta name="keywords" content="Flask">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flask">
+<meta property="og:url" content="http://yoursite.com/2018/08/22/flask/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="了解 Flaskflask搭建示例from flask import Flask  app = Flask(__name__)  # 路由 @app.route(&amp;apos;/&amp;apos;) def hello_world():     return &amp;apos;Hello world&amp;apos;  if __name__ == &amp;apos;__main__&amp;apos;:     app.run(">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-09-20T07:46:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="flask">
+<meta name="twitter:description" content="了解 Flaskflask搭建示例from flask import Flask  app = Flask(__name__)  # 路由 @app.route(&amp;apos;/&amp;apos;) def hello_world():     return &amp;apos;Hello world&amp;apos;  if __name__ == &amp;apos;__main__&amp;apos;:     app.run(">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/22/flask/">
+
+
+
+
+
+  <title>flask | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">岁月如风，吹散青春</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/flask/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Laurel-rao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">flask</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-22T18:56:34+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/服务器框架/" itemprop="url" rel="index">
+                    <span itemprop="name">服务器框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="了解-Flask"><a href="#了解-Flask" class="headerlink" title="了解 Flask"></a>了解 Flask</h1><h1 id="flask搭建示例"><a href="#flask搭建示例" class="headerlink" title="flask搭建示例"></a>flask搭建示例</h1><pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+# 路由
+@app.route(&apos;/&apos;)
+def hello_world():
+    return &apos;Hello world&apos;
+
+if __name__ == &apos;__main__&apos;:
+    app.run()
+</code></pre><ol>
+<li><p>app 为Flask 创建的对象，意思是导入本模块</p>
+<ul>
+<li><p>假如有多个模块，使用另一个文件写入 </p>
+<pre><code>from app import app
+
+if __name__ == &apos;__main__&apos;:
+    app.run()
+</code></pre></li>
+</ul>
+</li>
+<li><p>路由使用route方法，装饰在 view 函数上，并且可以多个路由装饰在一个view上</p>
+<pre><code>@app.route(&apos;/&apos;)
+@app.route(&apos;/index&apos;)
+def hello_world():
+    return &apos;Hello world&apos;
+</code></pre></li>
+<li><p>return 返回给response</p>
+</li>
+</ol>
+<h1 id="Flask-扩建"><a href="#Flask-扩建" class="headerlink" title="Flask 扩建"></a>Flask 扩建</h1><h2 id="扩建路由-url"><a href="#扩建路由-url" class="headerlink" title="扩建路由 url"></a>扩建路由 url</h2><ul>
+<li>@app.route(‘/index/‘) ==== 普通URL</li>
+</ul>
+<ul>
+<li><p>@app.route(‘/<index>‘) ==== 传参</index></p>
+<pre><code>@app.route(&apos;/&lt;index&gt;&apos;)
+def hello_world(index):
+    return &apos;Hello world %s&apos;%index
+</code></pre></li>
+<li><p>@app.route(‘/index/‘, methods=[‘get’])</p>
+<ol>
+<li>methods 参数是一个列表</li>
+</ol>
+</li>
+</ul>
+<h2 id="扩建views"><a href="#扩建views" class="headerlink" title="扩建views"></a>扩建views</h2><ul>
+<li>‘ ‘   返回字符串<ul>
+<li>return ‘hello world’</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>redirect URL 反转用于重定向</p>
+<ul>
+<li><p>url_for(‘函数名’)   </p>
+<p>   @app.route(‘/<index>‘)<br>  def hello_world(index):</index></p>
+<pre><code>return &apos;Hello world %s&apos;%index
+</code></pre><p>  @app.route(‘/login/‘)<br>  def login():</p>
+<pre><code>return redirect(url_for(&apos;hello_world&apos;))
+</code></pre></li>
+</ul>
+</li>
+<li><p>render_template()   渲染模板</p>
+<ul>
+<li>jinja2模板引擎 </li>
+<li><p>&lt;a href=<a href="http://jinja.pocoo.org/docs/2.10/templates/&gt;网站" target="_blank" rel="noopener">http://jinja.pocoo.org/docs/2.10/templates/&gt;网站</a> </p>
+<pre><code>{% ... %}    语句块开始
+{% endxxx %} 语句块结束
+{{ ... }}    变量值
+    注释
+</code></pre></li>
+<li><p>render_template(‘xxx.html’, age=13)</p>
+</li>
+<li>传入变量，函数， 语句</li>
+<li>
+<pre><code>{% if age >10 %}
+			  <h1>Hello {{ age }}!</h1>
+			{% elif age = 10 %}
+			  <h1>Hello {{ age + 10 }}!</h1>
+			{% else %}
+			  <h1>Hello, World!</h1>
+			{% endif %}
+</code></pre></li>
+<li><p>注意，在包内创建 templates 是唯一的方法，</p>
+</li>
+<li>并且需要在运行模块文件的旁边或者在app包内</li>
+</ul>
+</li>
+<li><p>respon = make_response(render_template(…))  响应对象</p>
+</li>
+</ul>
+<h1 id="静态文件"><a href="#静态文件" class="headerlink" title="静态文件"></a>静态文件</h1><pre><code>- 创建文件夹static，与 templates 在同一路径下
+
+- 直接填入路径
+
+        &lt;img src=&quot;/static/wangyiyun.PNG&quot; alt=&quot;&quot;&gt;
+
+- 使用url_for 进行构造
+</code></pre><h1 id="request-对象"><a href="#request-对象" class="headerlink" title="request 对象"></a>request 对象</h1><pre><code>print(request.method)
+print(request.path)
+# post表单内容
+print(request.form) # ImmutableMultiDict([])
+print(request.get_data())   # json格式
+print(request.get_json())   # 字典格式
+# get请求内容
+print(request.args) # ImmutableMultiDict([])
+print(request.environ) # wsgi 的environ信息
+print(request.cookie)
+</code></pre><h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><ul>
+<li><p>设置cookie</p>
+<ol>
+<li><p>构建响应对象  resp = make_response(render_template(…))</p>
+</li>
+<li><p>设置cookie   resp.set_cookie(‘’, expires=xxx, max_age=3600 # 一个小时)</p>
+</li>
+<li><p>return resp</p>
+</li>
+</ol>
+</li>
+<li><p>获得cookie</p>
+<ol>
+<li>request.cookies.get(‘xxx’)</li>
+</ol>
+</li>
+<li><p>删除cookie</p>
+<ol>
+<li>resp = make_response(render_template(…))</li>
+<li>第一种 resp.delete_cookie()</li>
+<li>第二种 resp.set_cookie(xxx, expires=0)</li>
+<li>return resp</li>
+</ol>
+</li>
+</ul>
+<h1 id="错误-和-日志"><a href="#错误-和-日志" class="headerlink" title="错误 和 日志"></a>错误 和 日志</h1><ul>
+<li>abort(401)</li>
+<li><p>设置自定义错误页面</p>
+<pre><code>@app.errorhandler(404)
+def page_not_found(error):
+    return render_template(&apos;page_not_found.html&apos;), 404
+</code></pre></li>
+<li><p>日志</p>
+<pre><code>app.logger.debug(&apos;A value for debugging&apos;)
+app.logger.warning(&apos;A warning occurred (%d apples)&apos;, 42)
+app.logger.error(&apos;An error occurred&apos;)
+</code></pre></li>
+</ul>
+<h1 id="session"><a href="#session" class="headerlink" title="session"></a>session</h1><h2 id="除了请求对象之外，还有第二个对象-session，"><a href="#除了请求对象之外，还有第二个对象-session，" class="headerlink" title="除了请求对象之外，还有第二个对象 session，"></a>除了请求对象之外，还有第二个对象 session，</h2><h2 id="它允许您将特定于用户的信息从一个请求存储到下一个请求"><a href="#它允许您将特定于用户的信息从一个请求存储到下一个请求" class="headerlink" title="它允许您将特定于用户的信息从一个请求存储到下一个请求"></a>它允许您将特定于用户的信息从一个请求存储到下一个请求</h2><h2 id="这是在cookie的基础上实现的，并以加密方式对cookie进行签名"><a href="#这是在cookie的基础上实现的，并以加密方式对cookie进行签名" class="headerlink" title="这是在cookie的基础上实现的，并以加密方式对cookie进行签名"></a>这是在cookie的基础上实现的，并以加密方式对cookie进行签名</h2><h2 id="这意味着用户可以查看cookie的内容但不能修改它，除非他们知道用于签名的密钥"><a href="#这意味着用户可以查看cookie的内容但不能修改它，除非他们知道用于签名的密钥" class="headerlink" title="这意味着用户可以查看cookie的内容但不能修改它，除非他们知道用于签名的密钥"></a>这意味着用户可以查看cookie的内容但不能修改它，除非他们知道用于签名的密钥</h2><pre><code>if __name__ == &apos;__main__&apos;:
+    # 设置 secret_key
+    app.config[&apos;SECRET_KEY&apos;] = os.urandom(16)
+    app.run(debug=True, port=2766, host=&apos;0.0.0.0&apos;)
+</code></pre><ul>
+<li><p>设置session</p>
+<ol>
+<li>session[‘username’] = request.form[‘username’]</li>
+</ol>
+</li>
+<li><p>获得session</p>
+<ol>
+<li>a = session[‘username’]</li>
+</ol>
+</li>
+<li><p>删除session</p>
+<ol>
+<li>session.pop(‘username’, None)</li>
+</ol>
+</li>
+</ul>
+<h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><blockquote>
+<p>网址–<a href="https://blog.csdn.net/u014793102/article/details/80378543" target="_blank" rel="noopener">https://blog.csdn.net/u014793102/article/details/80378543</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Flask/" rel="tag"># Flask</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/21/python-program/" rel="next" title="python 爱不释手的编程语言">
+                <i class="fa fa-chevron-left"></i> python 爱不释手的编程语言
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/22/python 爬虫库/" rel="prev" title="python 常用爬虫库">
+                python 常用爬虫库 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Laurel-rao</p>
+              <p class="site-description motion-element" itemprop="description">Laurel-rao 博客网站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#了解-Flask"><span class="nav-number">1.</span> <span class="nav-text">了解 Flask</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flask搭建示例"><span class="nav-number">2.</span> <span class="nav-text">flask搭建示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flask-扩建"><span class="nav-number">3.</span> <span class="nav-text">Flask 扩建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#扩建路由-url"><span class="nav-number">3.1.</span> <span class="nav-text">扩建路由 url</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩建views"><span class="nav-number">3.2.</span> <span class="nav-text">扩建views</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Hello {{ age }}!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Hello {{ age + 10 }}!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Hello, World!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态文件"><span class="nav-number">7.</span> <span class="nav-text">静态文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#request-对象"><span class="nav-number">8.</span> <span class="nav-text">request 对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cookie"><span class="nav-number">9.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#错误-和-日志"><span class="nav-number">10.</span> <span class="nav-text">错误 和 日志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#session"><span class="nav-number">11.</span> <span class="nav-text">session</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#除了请求对象之外，还有第二个对象-session，"><span class="nav-number">11.1.</span> <span class="nav-text">除了请求对象之外，还有第二个对象 session，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#它允许您将特定于用户的信息从一个请求存储到下一个请求"><span class="nav-number">11.2.</span> <span class="nav-text">它允许您将特定于用户的信息从一个请求存储到下一个请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这是在cookie的基础上实现的，并以加密方式对cookie进行签名"><span class="nav-number">11.3.</span> <span class="nav-text">这是在cookie的基础上实现的，并以加密方式对cookie进行签名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这意味着用户可以查看cookie的内容但不能修改它，除非他们知道用于签名的密钥"><span class="nav-number">11.4.</span> <span class="nav-text">这意味着用户可以查看cookie的内容但不能修改它，除非他们知道用于签名的密钥</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库操作"><span class="nav-number">12.</span> <span class="nav-text">数据库操作</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Laurel-rao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

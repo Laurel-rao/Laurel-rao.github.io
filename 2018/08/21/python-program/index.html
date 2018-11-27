@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python basic,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="python介绍python特点 简单 简洁 功能强大 （自动化脚本，爬虫，网站后端，算法，人工智能接口） 运行效率低，开发效率高 代码开放（开源） python是一个胶水语言，可以很好的跟其他编程语言交互 python有很好的跨平台性能 python是解释型的，高级的，面向对象的编程语言  python构成数据(内建类 built-in) ==&amp;gt; 语句 ==&amp;gt; 语句块 ==&amp;gt;">
+<meta name="keywords" content="python basic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 爱不释手的编程语言">
+<meta property="og:url" content="http://yoursite.com/2018/08/21/python-program/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="python介绍python特点 简单 简洁 功能强大 （自动化脚本，爬虫，网站后端，算法，人工智能接口） 运行效率低，开发效率高 代码开放（开源） python是一个胶水语言，可以很好的跟其他编程语言交互 python有很好的跨平台性能 python是解释型的，高级的，面向对象的编程语言  python构成数据(内建类 built-in) ==&amp;gt; 语句 ==&amp;gt; 语句块 ==&amp;gt;">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-09-20T07:46:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python 爱不释手的编程语言">
+<meta name="twitter:description" content="python介绍python特点 简单 简洁 功能强大 （自动化脚本，爬虫，网站后端，算法，人工智能接口） 运行效率低，开发效率高 代码开放（开源） python是一个胶水语言，可以很好的跟其他编程语言交互 python有很好的跨平台性能 python是解释型的，高级的，面向对象的编程语言  python构成数据(内建类 built-in) ==&amp;gt; 语句 ==&amp;gt; 语句块 ==&amp;gt;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/21/python-program/">
+
+
+
+
+
+  <title>python 爱不释手的编程语言 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">岁月如风，吹散青春</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/21/python-program/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Laurel-rao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python 爱不释手的编程语言</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-21T19:45:13+08:00">
+                2018-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h1 id="python介绍"><a href="#python介绍" class="headerlink" title="python介绍"></a>python介绍</h1><h2 id="python特点"><a href="#python特点" class="headerlink" title="python特点"></a>python特点</h2><ol>
+<li>简单 简洁</li>
+<li>功能强大 （自动化脚本，爬虫，网站后端，算法，人工智能接口）</li>
+<li>运行效率低，开发效率高</li>
+<li>代码开放（开源）</li>
+<li>python是一个胶水语言，可以很好的跟其他编程语言交互</li>
+<li>python有很好的跨平台性能</li>
+<li>python是解释型的，高级的，面向对象的编程语言</li>
+</ol>
+<h2 id="python构成"><a href="#python构成" class="headerlink" title="python构成"></a>python构成</h2><p>数据(内建类 built-in) ==&gt; 语句 ==&gt; 语句块 ==&gt; 函数 ==&gt; 模块 ==&gt; 包 ==&gt; 项目</p>
+<h1 id="python数据类型"><a href="#python数据类型" class="headerlink" title="python数据类型"></a>python数据类型</h1><p>类型|说明<br>数字|int, float, complex<br>python对于数字并没有很详细<br>对于有无符号，长度不同没有特别的规定，理论上可以无限<br>字符串|str<br>Boolean|布尔值<br>True False<br>首字母要大写<br>Nonetype|只有一个值 None<br>序列|列表，元组，字典， 集合，bytes，bytearray&lt;都是可迭代对象&gt;</p>
+<h2 id="特殊类型介绍"><a href="#特殊类型介绍" class="headerlink" title="特殊类型介绍"></a>特殊类型介绍</h2><ul>
+<li>Boolean</li>
+</ul>
+<pre><code>1. 0 | 0.0 | 0+0j| None| 空的序列 | &apos; &apos;
+
+        使用bool()函数，可省略不写，直接表示
+        bool(&apos;&apos;) == &apos;&apos;
+
+2. 注意： &apos;0&apos; 为True  
+</code></pre><ul>
+<li><p>Nonetype</p>
+<p>  唯一值， None 与 0 不同， None表示不为任何类型</p>
+</li>
+</ul>
+<h1 id="基础操作符"><a href="#基础操作符" class="headerlink" title="基础操作符"></a>基础操作符</h1><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+ - * / **</td>
+<td>加减乘除</td>
+</tr>
+<tr>
+<td>&gt; &lt; &gt;= &lt;=</td>
+<td>大于， 小于， 大于等于， 小于等于</td>
+</tr>
+<tr>
+<td>+= -+ /= **= //= %=</td>
+<td>对本身进行改变<br> a += 1 等同于 a = a + 1<br>但内存地址会改变</td>
+</tr>
+<tr>
+<td>// 地板除</td>
+<td>10 // 3 = 3</td>
+</tr>
+<tr>
+<td>%  取余</td>
+<td>10 % 3 = 1</td>
+</tr>
+<tr>
+<td>== 表示两边相等</td>
+<td>‘3’ == 3 ===&gt; False</td>
+</tr>
+<tr>
+<td>not 取反</td>
+<td>not 3 ===&gt; False</td>
+</tr>
+<tr>
+<td>in 判断序列中是否包含<br>与 for 进行搭配</td>
+<td>‘a’ in ‘abc’ ===&gt; True</td>
+</tr>
+<tr>
+<td>is 判断内存地址是否一致<br>等同于 id(a) == id(b)</td>
+<td>‘0’ == ‘0.0’ ===&gt; False</td>
+</tr>
+<tr>
+<td>not in<br>与 in 相反</td>
+<td>is not <br> 与 is 相反</td>
+</tr>
+<tr>
+<td>and</td>
+<td>与 1 and 3 ===&gt; 1</td>
+</tr>
+<tr>
+<td>or</td>
+<td>或 1 or 3 ===&gt;3</td>
+</tr>
+</tbody>
+</table>
+<h1 id="常用内建函数"><a href="#常用内建函数" class="headerlink" title="常用内建函数"></a>常用内建函数</h1><ul>
+<li>函数介绍</li>
+<li style="list-style: none"><input type="checkbox"> 中的内容，表示可选</li>
+</ul>
+<blockquote>
+<p>abs(-9) </p>
+</blockquote>
+<ul>
+<li>取绝对值</li>
+</ul>
+<blockquote>
+<p>round(num[, n])</p>
+</blockquote>
+<ul>
+<li>对 num 进行四舍五入，默认到整数</li>
+<li>n可以为负数，表示为小数位前 第几位</li>
+</ul>
+<blockquote>
+<p>pow(x, y[, z])</p>
+</blockquote>
+<ul>
+<li>表示x 的 y次方</li>
+<li>填写 z 表示 x 的 y次方 再对 z 取余</li>
+</ul>
+<blockquote>
+<p>float(), int(), complex(), str()，bool()</p>
+</blockquote>
+<ul>
+<li>分别转换为 浮点，整数，复数，字符串，布尔</li>
+</ul>
+<blockquote>
+<p>id， type</p>
+</blockquote>
+<ul>
+<li>id 返回内存地址，可查看数据是否为同一地址</li>
+<li>type 查看类型</li>
+</ul>
+<blockquote>
+<p>isinstance(x, type)</p>
+</blockquote>
+<ul>
+<li>如果 x 的类型是 type，返回 True</li>
+</ul>
+<blockquote>
+<p>help()</p>
+</blockquote>
+<ul>
+<li>查看类，模块的帮助，该帮助实际是 编写在三引号中的内容 ‘’’ 文档 ‘’’</li>
+<li>按 q 帮助</li>
+</ul>
+<blockquote>
+<p>chr()  ord()</p>
+</blockquote>
+<ul>
+<li><p>ascii 编码 相对函数</p>
+<pre><code> In[22]: ord(&apos;n&apos;)
+Out[22]: 110
+ In[23]: chr(110)
+Out[23]: &apos;n&apos;
+</code></pre></li>
+</ul>
+<blockquote>
+<p>format  ‘%fmt’</p>
+</blockquote>
+<ul>
+<li>对字符串进行格式化</li>
+<li><p>填充，对浮点数四舍五入，设置填充后的位置</p>
+<pre><code>&apos;{0:-^6s}&apos;.format(&apos;n&apos;) ===&gt; &apos;--n---&apos;
+&apos;%-6s&apos;%&apos;n&apos; ==&gt; &apos;n     &apos;
+</code></pre></li>
+</ul>
+<blockquote>
+<p>hasattr(a, attr)</p>
+</blockquote>
+<ul>
+<li>判断a是否有attr这个属性</li>
+</ul>
+<blockquote>
+<p>getattr(a, attr)</p>
+</blockquote>
+<ul>
+<li>获取a的属性值，等同于 a.attr</li>
+</ul>
+<blockquote>
+<p>setattr(a, attr，12)</p>
+</blockquote>
+<ul>
+<li><p>设置a的属性值，等同于 a.attr = 12</p>
+<pre><code>&gt;&gt;&gt;class A(object):
+...     bar = 1
+... 
+&gt;&gt;&gt; a = A()
+&gt;&gt;&gt; getattr(a, &apos;bar&apos;)          # 获取属性 bar 值
+1
+&gt;&gt;&gt; setattr(a, &apos;bar&apos;, 5)       # 设置属性 bar 值
+&gt;&gt;&gt; a.bar
+5
+</code></pre></li>
+</ul>
+<blockquote>
+<p>print(x, …[,sep=’ ‘,end=’\n’])</p>
+</blockquote>
+<ul>
+<li>sep 默认为 空格, 可选空格符，</li>
+<li>end 默认为 ‘\n’, 可选 ‘\r’ ‘\t’ ‘\b’</li>
+</ul>
+<h1 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h1><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h2 id="常见字符串格式"><a href="#常见字符串格式" class="headerlink" title="常见字符串格式"></a>常见字符串格式</h2><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%s</td>
+<td>字符串（str()的显示）</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>字符串采用repr()显示</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>单个字符</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>二进制整数 bin</td>
+</tr>
+<tr>
+<td>%i</td>
+<td>十进制整数 int</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>八进制整数 oct</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>十六进制整数 hex</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>浮点数</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>指数</td>
+</tr>
+<tr>
+<td>%%</td>
+<td>字符% </td>
+</tr>
+</tbody>
+</table>
+<h2 id="反斜杠转义"><a href="#反斜杠转义" class="headerlink" title="反斜杠转义"></a>反斜杠转义</h2><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>不加引号，为续行符</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>横向制表符</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格，backspace</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠</td>
+</tr>
+<tr>
+<td>r’’</td>
+<td>对字符串不转义</td>
+</tr>
+<tr>
+<td>\’</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+<tr>
+<td>\x72</td>
+<td>x72 十六进制， 等同于 ‘r’</td>
+</tr>
+</tbody>
+</table>
+<h2 id="字符串-str-方法"><a href="#字符串-str-方法" class="headerlink" title="字符串 str 方法"></a>字符串 str 方法</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s.isdigit()</td>
+<td>是否全为数字</td>
+</tr>
+<tr>
+<td>s.isnumeric()</td>
+<td>是否全为数字</td>
+</tr>
+<tr>
+<td>s.isalpha()</td>
+<td>是否全为字母</td>
+</tr>
+<tr>
+<td>s.islower()</td>
+<td>是否全为小写， 小写字母加数字为 True， 全为数字为 False</td>
+</tr>
+<tr>
+<td>s.isupper()</td>
+<td>是否全为大写， 大写字母加数字为True， 全为数字为False</td>
+</tr>
+<tr>
+<td>s.isspace()</td>
+<td>是否全为空白字符</td>
+</tr>
+<tr>
+<td>s.center(width, ‘-‘)</td>
+<td>填充 width长度的字符，字符串居中，填充内容为 ‘-’</td>
+</tr>
+<tr>
+<td>s.count(str, start, end)</td>
+<td>对 str 进行计数， 可选 起止位置</td>
+</tr>
+<tr>
+<td>s.find(str, start, end)</td>
+<td>寻找字符，返回相应下标，没有找到，返回 -1</td>
+</tr>
+<tr>
+<td>s.strip()</td>
+<td>去除左右两边空白字符</td>
+</tr>
+<tr>
+<td>s.lstrip()</td>
+<td>去除左边空白字符</td>
+</tr>
+<tr>
+<td>s.rstrip()</td>
+<td>去除右边空白字符</td>
+</tr>
+<tr>
+<td>s.upper()</td>
+<td>将字符串转化为 大写</td>
+</tr>
+<tr>
+<td>s.lower()</td>
+<td>将字符串转化为 小写</td>
+</tr>
+<tr>
+<td>s.replace()</td>
+<td>替换字符串</td>
+</tr>
+<tr>
+<td>s.startwith(‘s’)</td>
+<td>判断是否以 s 开头， 可选起止位置</td>
+</tr>
+<tr>
+<td>s.endwith(‘s’)</td>
+<td>判断是否以 s 结尾， 可选起止位置 </td>
+</tr>
+<tr>
+<td>s.title()</td>
+<td>对每个英文单词的首字母大写</td>
+</tr>
+<tr>
+<td>s.capitalize()</td>
+<td>首字母大写</td>
+</tr>
+<tr>
+<td>s.format()</td>
+<td>格式化字符串</td>
+</tr>
+<tr>
+<td>s.join(list)</td>
+<td>将 list 转化为 以 s 为填充的字符串</td>
+</tr>
+<tr>
+<td>s.split(‘-‘)</td>
+<td>以 ‘-’ 分隔， 将字符串转化为列表</td>
+</tr>
+<tr>
+<td>str(1)</td>
+<td>将数字类型转化为 字符串</td>
+</tr>
+</tbody>
+</table>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li>列表可存放任何元素，是一种有序的可变的序列</li>
+<li></li>
+<li><p>创建</p>
+<ol>
+<li>list(literable)</li>
+<li>list()</li>
+<li>[x for i in y if i&gt;0]</li>
+<li>[1, 3, 4] + [1, 5]  ===&gt; [1, 3, 4, 1, 5]</li>
+<li>[1, 2] * 3 ===&gt; [1, 2, 1, 2, 1, 2]</li>
+</ol>
+</li>
+</ul>
+<h3 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h3><ul>
+<li><p>in/not in</p>
+</li>
+<li><blockquote>
+<p>&lt; &gt;= != ==</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="索引和切片"><a href="#索引和切片" class="headerlink" title="索引和切片"></a>索引和切片</h3><ul>
+<li><p>[start:end:step]</p>
+<pre><code>lis = [1, 2, 3, 4]
+# 索引， 切片
+lis[::-1] == [4, 3, 2, 1]
+lis[1] == [2]
+lis[1:2] == [2]
+# 赋值
+lis[1] = 3  ===》 lis [1, 3, 3, 4]
+# 删除 
+lis[::] = []
+</code></pre></li>
+</ul>
+<ul>
+<li>常用函数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在最后添加，如果为列表，作为一个元素添加</td>
+<td>lis.append()</td>
+</tr>
+<tr>
+<td>在最后添加列表，相当于  lis1 + lis2</td>
+<td>lis.extend()</td>
+</tr>
+<tr>
+<td>返回对应元素的索引下标， 没找到报错</td>
+<td>lis.index(v, begin, end)</td>
+</tr>
+<tr>
+<td>返回个数，没找到，返回 0</td>
+<td>lis.count(v, begin, end)</td>
+</tr>
+<tr>
+<td>删除第一个出现的值，如该值不存在，报错</td>
+<td>lis.remove(x)</td>
+</tr>
+<tr>
+<td>删除一个值，并返回该值, 无参数删除最后一个<br>使用索引删除，如果索引没找到，报错</td>
+<td>lis.pop([index])</td>
+</tr>
+<tr>
+<td>对列表进行浅拷贝</td>
+<td>lis.copy</td>
+</tr>
+<tr>
+<td>清空列表相当于 lis[:] = []</td>
+<td>lis.clear</td>
+</tr>
+<tr>
+<td>删除列表</td>
+<td>del lis</td>
+</tr>
+<tr>
+<td>对列表进行排序，返回None， lis被改变</td>
+<td>lis.sort()</td>
+</tr>
+<tr>
+<td>将列表顺序进行反转，相当于 [::-1]</td>
+<td>lis.reverse()</td>
+</tr>
+<tr>
+<td>返回一个值，无参数时，返回最后一个值，当参数为索引时，使用的是</td>
+<td>lis.pop()</td>
+</tr>
+<tr>
+<td>对列表进行深拷贝</td>
+<td>copy.deepcopy(lis)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h2><ul>
+<li><p>元组的元素类型不可变</p>
+<pre><code>|  count(...)
+|      T.count(value) -&gt; integer -- return number of occurrences of value
+|  
+|  index(...)
+|      T.index(value, [start, [stop]])
+</code></pre></li>
+</ul>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><ul>
+<li>常见函数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dict.keys()</td>
+<td>返回dict_keys 的可迭代对象，不可使用索引</td>
+</tr>
+<tr>
+<td>dict.items()</td>
+<td>返回dict_items 的可迭代对象，不可使用索引</td>
+</tr>
+<tr>
+<td>dict.values()</td>
+<td>返回dict_values 的可迭代对象，不可使用索引</td>
+</tr>
+<tr>
+<td>dict.get(‘key’， default)</td>
+<td>获取 value， 没找到，返回default</td>
+</tr>
+<tr>
+<td>dict.pop(‘key’)</td>
+<td>删除键为 key 的item</td>
+</tr>
+<tr>
+<td>dict.clear()</td>
+<td>删除列表内的内容</td>
+</tr>
+<tr>
+<td>del dict</td>
+<td>删除列表</td>
+</tr>
+</tbody>
+</table>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><ul>
+<li>集合是可变的，集合不可存在重复值， 集合是无序的</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set.add()</td>
+<td>追加一个值</td>
+</tr>
+<tr>
+<td>set.update()</td>
+<td>最佳一个可迭代对象，可添加字典，添加键</td>
+</tr>
+<tr>
+<td>set.remove(value)</td>
+<td>删除值， 不存在报错</td>
+</tr>
+<tr>
+<td>set1 &amp; set2</td>
+<td>与操作 两个集合的共同值</td>
+</tr>
+<tr>
+<td>set1 \</td>
+<td>set2</td>
+<td>或操作 两个集合的所有值</td>
+</tr>
+<tr>
+<td>set1 ^ set2</td>
+<td>与非操作 （set1</td>
+<td>set2） - （set1 &amp; set2）</td>
+</tr>
+<tr>
+<td>set1 - set2</td>
+<td>差操作  减去公共值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="固定集合-frozenset"><a href="#固定集合-frozenset" class="headerlink" title="固定集合 frozenset()"></a>固定集合 frozenset()</h2><ul>
+<li>与 操作 或操作 与非操作 差操作</li>
+<li>frozenset.copy  复制固定集合</li>
+</ul>
+<h2 id="bytes"><a href="#bytes" class="headerlink" title="bytes"></a>bytes</h2><ul>
+<li><p>bytes是不可变的，bytearray是可变的</p>
+</li>
+<li><p>encode()</p>
+</li>
+<li>decode()</li>
+</ul>
+<h2 id="bytearray"><a href="#bytearray" class="headerlink" title="bytearray"></a>bytearray</h2><ul>
+<li>列表的大部分方法都可用</li>
+</ul>
+<h2 id="python常用语句"><a href="#python常用语句" class="headerlink" title="python常用语句"></a>python常用语句</h2><ul>
+<li>if elif else<ul>
+<li>条件表达式<pre><code>a if a &gt; b else b 
+</code></pre></li>
+</ul>
+</li>
+<li>where else</li>
+<li>for in else</li>
+<li>continue</li>
+<li>break</li>
+<li>pass</li>
+<li>try except else finally</li>
+<li>条件表达式</li>
+</ul>
+<h2 id="python-for-in常用函数"><a href="#python-for-in常用函数" class="headerlink" title="python for in常用函数"></a>python for in常用函数</h2><p>函数|说明<br>range(start, end, step)|返回可迭代对象<br>zip(iter1, iter2…)|对多个可迭代对象进行迭代，当其中一个序列中无数值时，zip迭代结束<br>enumerate(iterable)|返回一个由索引和元素组成的枚举对象</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ul>
+<li><p>形参</p>
+<ol>
+<li>位置传参</li>
+<li>关键字传参</li>
+<li>序列传参</li>
+<li>字典关键传参</li>
+</ol>
+</li>
+<li><p>实参</p>
+<pre><code>def f(*args):
+    for i in args:
+        print(i)
+
+f(*(1,2,3))
+
+def f2(**kwargs):
+    for x, y in kwargs.items():
+        print(x, y)
+</code></pre></li>
+</ul>
+<pre><code>f2(**{&apos;a&apos;: 1, &apos;b&apos;: 0})
+</code></pre><h2 id="return"><a href="#return" class="headerlink" title="return"></a>return</h2><ul>
+<li>return  == return None  == 不写 return</li>
+<li>return 可为任意类型</li>
+</ul>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
+<li>将一个函数 放入 另一函数的内部，作为函数的内部变量，使得外部无法访问</li>
+<li>用法: python 是开源的， 使用闭包可以隐藏一些重要的细节，不让外部轻易了解函数的逻辑，或是一些重要的变量</li>
+</ul>
+<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><ul>
+<li>一个函数直接或间接的调用自身，</li>
+</ul>
+<h2 id="内建高阶函数"><a href="#内建高阶函数" class="headerlink" title="内建高阶函数"></a>内建高阶函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map</td>
+<td>将函数作为参数传入，处理一个可迭代对象，返回一个被map处理完的可迭代函数</td>
+</tr>
+<tr>
+<td>filter</td>
+<td>筛选函数</td>
+</tr>
+<tr>
+<td>sorted</td>
+<td>排序函数</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>叠加处理函数 from functools import reduce  每一次取出两个数，与之前的结果进行叠加， 适合求和或阶乘</td>
+</tr>
+</tbody>
+</table>
+<h2 id="模块介绍"><a href="#模块介绍" class="headerlink" title="模块介绍"></a>模块介绍</h2><h2 id="常用模块"><a href="#常用模块" class="headerlink" title="常用模块"></a>常用模块</h2><h2 id="进阶使用模块"><a href="#进阶使用模块" class="headerlink" title="进阶使用模块"></a>进阶使用模块</h2><h2 id="快速入手模块"><a href="#快速入手模块" class="headerlink" title="快速入手模块"></a>快速入手模块</h2><ul>
+<li>dir()</li>
+<li>getattr()</li>
+</ul>
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><ul>
+<li>try-except    用来捕获异常通知</li>
+<li>try-finally   用来做一定要做的事情</li>
+<li>raise         用来发生异常通知</li>
+<li>assert  用来根据条件来发出AssertionError类型的异常通知，当真值为假触发</li>
+</ul>
+<h1 id="with-语句-环境管理器"><a href="#with-语句-环境管理器" class="headerlink" title="with 语句(环境管理器)"></a>with 语句(环境管理器)</h1><ul>
+<li>实现 <strong>enter</strong> 和 <strong>exit</strong> 方法</li>
+</ul>
+<h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><table>
+<thead>
+<tr>
+<th>常见重载</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>init</strong></td>
+<td>初始化方法</td>
+</tr>
+<tr>
+<td><strong>new</strong></td>
+<td>构建对象方法</td>
+</tr>
+<tr>
+<td><strong>call</strong></td>
+<td>对象被创建时被调用</td>
+</tr>
+<tr>
+<td><strong>del</strong></td>
+<td>对象被内存回收时被调用</td>
+</tr>
+<tr>
+<td><strong>enter</strong></td>
+<td>with 开始的方法</td>
+</tr>
+<tr>
+<td><strong>exit</strong></td>
+<td>with 关闭的方法</td>
+</tr>
+<tr>
+<td><strong>iter</strong></td>
+<td>生成器</td>
+</tr>
+<tr>
+<td><strong>next</strong></td>
+<td>迭代器</td>
+</tr>
+<tr>
+<td><strong>repr</strong></td>
+<td>self字符串， 可用eval 进行解析</td>
+</tr>
+<tr>
+<td><strong>str</strong></td>
+<td>self字符串</td>
+</tr>
+</tbody>
+</table>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><table>
+<thead>
+<tr>
+<th>@ 方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@property</td>
+<td>将方法变为属性进行使用</td>
+</tr>
+<tr>
+<td>@func</td>
+<td>装饰器</td>
+</tr>
+<tr>
+<td>@classmethod</td>
+<td>类方法，参数第一个位置为 cls，不需要加 self </td>
+</tr>
+<tr>
+<td>@staticmethod</td>
+<td>静态方法，不需要加 self， 也不需要 加cls</td>
+</tr>
+</tbody>
+</table>
+<h2 id="属性设置"><a href="#属性设置" class="headerlink" title="属性设置"></a>属性设置</h2><ol>
+<li>getattr(obj, name[, default])  从一个对象得到对象的属性；getattr(x, ‘y’) 等同于x.y; 当属性不存在时,如果给出default参数,则返回default,如果没有给出default 则产生一个AttributeError错误</li>
+<li>hasattr(obj, name)  用给定的name返回对象obj是否有此属性,此种做法可以避免在getattr(obj, name)时引发错误</li>
+<li>setattr(obj, name, value)   给对象obj的名为name的属性设置相应的值value, set(x, ‘y’, v) 等同于 x.y = v</li>
+<li>delattr(obj, name)  删除对象obj中的name属性, delattr(x, ‘y’) 等同于 del x.y</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python-basic/" rel="tag"># python basic</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/18/scrapy-redis/" rel="next" title="scrapy-redis">
+                <i class="fa fa-chevron-left"></i> scrapy-redis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/22/flask/" rel="prev" title="flask">
+                flask <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Laurel-rao</p>
+              <p class="site-description motion-element" itemprop="description">Laurel-rao 博客网站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python介绍"><span class="nav-number">1.</span> <span class="nav-text">python介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python特点"><span class="nav-number">1.1.</span> <span class="nav-text">python特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python构成"><span class="nav-number">1.2.</span> <span class="nav-text">python构成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python数据类型"><span class="nav-number">2.</span> <span class="nav-text">python数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特殊类型介绍"><span class="nav-number">2.1.</span> <span class="nav-text">特殊类型介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础操作符"><span class="nav-number">3.</span> <span class="nav-text">基础操作符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用内建函数"><span class="nav-number">4.</span> <span class="nav-text">常用内建函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#序列"><span class="nav-number">5.</span> <span class="nav-text">序列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">5.1.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见字符串格式"><span class="nav-number">5.2.</span> <span class="nav-text">常见字符串格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反斜杠转义"><span class="nav-number">5.3.</span> <span class="nav-text">反斜杠转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串-str-方法"><span class="nav-number">5.4.</span> <span class="nav-text">字符串 str 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">5.5.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">5.5.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础使用"><span class="nav-number">5.5.2.</span> <span class="nav-text">基础使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引和切片"><span class="nav-number">5.5.3.</span> <span class="nav-text">索引和切片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组"><span class="nav-number">5.6.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典"><span class="nav-number">5.7.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合"><span class="nav-number">5.8.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定集合-frozenset"><span class="nav-number">5.9.</span> <span class="nav-text">固定集合 frozenset()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bytes"><span class="nav-number">5.10.</span> <span class="nav-text">bytes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bytearray"><span class="nav-number">5.11.</span> <span class="nav-text">bytearray</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python常用语句"><span class="nav-number">5.12.</span> <span class="nav-text">python常用语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-for-in常用函数"><span class="nav-number">5.13.</span> <span class="nav-text">python for in常用函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">6.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数"><span class="nav-number">6.1.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#return"><span class="nav-number">6.2.</span> <span class="nav-text">return</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">6.3.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器"><span class="nav-number">6.4.</span> <span class="nav-text">装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">6.5.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内建高阶函数"><span class="nav-number">6.6.</span> <span class="nav-text">内建高阶函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块介绍"><span class="nav-number">6.7.</span> <span class="nav-text">模块介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用模块"><span class="nav-number">6.8.</span> <span class="nav-text">常用模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶使用模块"><span class="nav-number">6.9.</span> <span class="nav-text">进阶使用模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速入手模块"><span class="nav-number">6.10.</span> <span class="nav-text">快速入手模块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异常处理"><span class="nav-number">7.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#with-语句-环境管理器"><span class="nav-number">8.</span> <span class="nav-text">with 语句(环境管理器)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运算符重载"><span class="nav-number">9.</span> <span class="nav-text">运算符重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象"><span class="nav-number">10.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#属性设置"><span class="nav-number">10.1.</span> <span class="nav-text">属性设置</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Laurel-rao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="网络编程,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="网络基础OSI 七层协议 物理层 ,数据链路层 , 网络层 ,传输层 ,会话层, 表示层, 应用层     层 说明     物理层 主要用来定义物理设备标准,用来传输比特流(0和1 的电流表示)这一层的数据叫做bite(比特)   数据链路层 定义如何让格式化数据进行传输,以及如何让控制对物理介质进行访问这一层通常还会提供错误检测和纠正,以确保数据的可靠传输   网络层 对位于不同地理位置的网络">
+<meta name="keywords" content="网络编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-web-basic">
+<meta property="og:url" content="http://yoursite.com/2018/08/25/python-web-basic/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="网络基础OSI 七层协议 物理层 ,数据链路层 , 网络层 ,传输层 ,会话层, 表示层, 应用层     层 说明     物理层 主要用来定义物理设备标准,用来传输比特流(0和1 的电流表示)这一层的数据叫做bite(比特)   数据链路层 定义如何让格式化数据进行传输,以及如何让控制对物理介质进行访问这一层通常还会提供错误检测和纠正,以确保数据的可靠传输   网络层 对位于不同地理位置的网络">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-09-20T07:46:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python-web-basic">
+<meta name="twitter:description" content="网络基础OSI 七层协议 物理层 ,数据链路层 , 网络层 ,传输层 ,会话层, 表示层, 应用层     层 说明     物理层 主要用来定义物理设备标准,用来传输比特流(0和1 的电流表示)这一层的数据叫做bite(比特)   数据链路层 定义如何让格式化数据进行传输,以及如何让控制对物理介质进行访问这一层通常还会提供错误检测和纠正,以确保数据的可靠传输   网络层 对位于不同地理位置的网络">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/25/python-web-basic/">
+
+
+
+
+
+  <title>python-web-basic | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">岁月如风，吹散青春</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/25/python-web-basic/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Laurel-rao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python-web-basic</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-25T16:23:44+08:00">
+                2018-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="网络基础"><a href="#网络基础" class="headerlink" title="网络基础"></a>网络基础</h1><h2 id="OSI-七层协议"><a href="#OSI-七层协议" class="headerlink" title="OSI 七层协议"></a>OSI 七层协议</h2><ul>
+<li>物理层 ,数据链路层 , 网络层 ,传输层 ,会话层, 表示层, 应用层</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>层</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>物理层</td>
+<td>主要用来定义物理设备标准,用来传输比特流(0和1 的电流表示)<br>这一层的数据叫做bite(比特)</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>定义如何让格式化数据进行传输,以及如何让控制对物理介质进行访问<br>这一层通常还会提供错误检测和纠正,以确保数据的可靠传输</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>对位于不同地理位置的网络中的两个主机系统之间提供连接和路径选择<br>internet的发展使得从世界各站点访问信息的用户数量大大增加,而网络层<br>正是管理这些连接的层次</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>定义一些传输数据的协议和端口号(www端口80等),它的作用主要是将从下层<br>接收到的数据进行分段和传输,到达目的地址后再将数据进行重组,常常把这一  <br>数据叫段</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>通过传输层(端口号: 传输端口与接收端口)建立数据传输的通路,主要是在系统<br>之间发起会话或者接收会话请求(设备之间需要相互认识可以是IP也可以是<br>MAC或者是主机名)</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>可以确保一个系统的应用层所发送的信息可以被另一个系统的应用层读取</td>
+</tr>
+<tr>
+<td>应用层</td>
+<td>对表示层的信息进行解码，获取响应的信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="四层模型"><a href="#四层模型" class="headerlink" title="四层模型"></a>四层模型</h3><ul>
+<li>应用层，传输层，网络层， 物理层</li>
+</ul>
+<h3 id="五层模型"><a href="#五层模型" class="headerlink" title="五层模型"></a>五层模型</h3><ul>
+<li>应用层，传输层，网络层，链路层，物理层</li>
+</ul>
+<h3 id="各层协议"><a href="#各层协议" class="headerlink" title="各层协议"></a>各层协议</h3><table>
+<thead>
+<tr>
+<th>层</th>
+<th>协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>HTTP, FTP ,TFTP ,SMTP ,SNMP ,DNS ,TELENT ,HTTPS ,POP3 ,DHCP</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>数据的表示,安全,压缩  JPEG,ASCII,DECOIC,加密格式</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>建立,管理,终止会话 选择传输层协议</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>TCP/UDP协议 TCP 流式套接字 UDP 数据报式套接字</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>ICMP  IGMP  IPv4  IPv6   进行逻辑地址寻址 ARP  RARP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><ol>
+<li>客户端向服务器发起连接请求（问是否可以连接）</li>
+<li>服务器接收到请求后进行确认（允许连接）返回报文（一定的数据消息）</li>
+<li>客户端收到许可，建立连接</li>
+</ol>
+<h3 id="四次握手"><a href="#四次握手" class="headerlink" title="四次握手"></a>四次握手</h3><ol>
+<li>主动方发送报文告知被动方要断开连接</li>
+<li>被动方返回报文，告知受到请求，准备断开</li>
+<li>被动方发送报文给主动方告知准备就绪可以断开</li>
+<li>主动方发送报文确定断开</li>
+</ol>
+<h3 id="OSI-模型特点"><a href="#OSI-模型特点" class="headerlink" title="OSI 模型特点"></a>OSI 模型特点</h3><ul>
+<li>高内聚，低耦合</li>
+<li>每一层之间的功能单一，使用通用的接口，</li>
+<li>模块之间的关联和影响尽量减少</li>
+</ul>
+<h1 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP UDP"></a>TCP UDP</h1><table>
+<thead>
+<tr>
+<th>区别</th>
+<th>TCP</th>
+<th>UDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传输形式</td>
+<td>字节流式</td>
+<td>数据包式</td>
+</tr>
+<tr>
+<td>粘包</td>
+<td>会</td>
+<td>不会</td>
+</tr>
+<tr>
+<td>网络传输</td>
+<td>对网络传输要求较高</td>
+<td>对网络传输要求较低</td>
+</tr>
+<tr>
+<td>可靠性</td>
+<td>较高</td>
+<td>较低</td>
+</tr>
+<tr>
+<td>使用方式</td>
+<td>客户端端口<br>使用recv，send，connect</td>
+<td>客户端<br>使用recvfrom，sendto</td>
+</tr>
+<tr>
+<td>建立连接</td>
+<td>TCP 使用connect((ip, port))</td>
+<td>UDP 使用 sendto 兼连接功能</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>创建TCP套接字流程</p>
+<ol>
+<li>创建套接字对象  SOCK_STREAM</li>
+<li>设置host port </li>
+<li>设置套接字为监听</li>
+<li>阻塞等待间接请求 accept</li>
+<li>接收或发送信息  send recv</li>
+<li>关闭套接字</li>
+</ol>
+</li>
+<li><p>创建UDP套接字流程</p>
+<ol>
+<li>创建套接字对象 SOCK_DRGAM</li>
+<li>设置host port</li>
+<li>收发信息 sendto  recvfrom</li>
+<li>关闭套接字</li>
+</ol>
+</li>
+</ul>
+<h2 id="套接字常用方法"><a href="#套接字常用方法" class="headerlink" title="套接字常用方法"></a>套接字常用方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>socket.gethostname</td>
+<td>DESKTOP-BOOGIMN</td>
+</tr>
+<tr>
+<td>socket.gethostbyaddr’localhost’</td>
+<td>‘DESKTOP-BOOGIMN’, [], [‘::1’]</td>
+</tr>
+<tr>
+<td>socket.gethostbyname’localhost’</td>
+<td>127.0.0.1</td>
+</tr>
+<tr>
+<td>socket.gethostbyaddr’127.0.0.1’</td>
+<td>‘DESKTOP-BOOGIMN’, [], [‘127.0.0.1’]</td>
+</tr>
+<tr>
+<td>socket.gethostbyaddr’<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">http://www.baidu.com&#39;</a></td>
+<td>报错</td>
+</tr>
+<tr>
+<td>转换ip地址</td>
+<td>ipv4，ipv6</td>
+</tr>
+<tr>
+<td>socket.inet_aton’127.0.0.1’</td>
+<td>b’\x7f\x00\x00\x01’</td>
+</tr>
+<tr>
+<td>socket.inet_ntoab’\x7f\x00\x00\x01’</td>
+<td>127.0.0.1</td>
+</tr>
+<tr>
+<td>socket.inet_ptonsocket.AF_INET, ‘127.0.0.1’</td>
+<td>b’\x7f\x00\x00\x01’</td>
+</tr>
+<tr>
+<td>socket.inet_ntopsocket.AF_INET, b’\x7f\x00\x00\x01’</td>
+<td>127.0.0.1</td>
+</tr>
+<tr>
+<td>socket.inet_ptonsocket.AF_INET6, ‘127.0.0.1’</td>
+<td>OSError: [WinError 10022] 提供了一个无效的参数</td>
+</tr>
+<tr>
+<td>获取主机信息</td>
+<td></td>
+</tr>
+<tr>
+<td>socket.getservbyport80</td>
+<td>http</td>
+</tr>
+<tr>
+<td>socket.getservbyname’FTP’</td>
+<td>21</td>
+</tr>
+<tr>
+<td>socket.getservbyname’Ssh’</td>
+<td>22</td>
+</tr>
+<tr>
+<td>socket.getservbyname’Https’</td>
+<td>443</td>
+</tr>
+<tr>
+<td>socket.getservbyport23</td>
+<td>telnet</td>
+</tr>
+<tr>
+<td>socket.getservbyport143</td>
+<td>OSError: port/proto not found</td>
+</tr>
+<tr>
+<td>socket.getservbyport53</td>
+<td>domain DNS—UDP</td>
+</tr>
+<tr>
+<td>ipconfig</td>
+<td>cmd命令 查看ip 及 mac地址</td>
+</tr>
+<tr>
+<td>ifconfig</td>
+<td>bash命令 查看ip 及 mac 地址</td>
+</tr>
+</tbody>
+</table>
+<h2 id="UDP套接字"><a href="#UDP套接字" class="headerlink" title="UDP套接字"></a>UDP套接字</h2><ul>
+<li>客户端不需要指定端口号和ip地址</li>
+<li>在连接服务器时，电脑自动指定为客户端绑定一个端口</li>
+<li>因此客户端连接服务器时，需要首先发送信息确认连接</li>
+</ul>
+<h3 id="使用地址，无论是-TCP-，还是-UDP-，地址都使用元组的形式进行传参"><a href="#使用地址，无论是-TCP-，还是-UDP-，地址都使用元组的形式进行传参" class="headerlink" title="使用地址，无论是 TCP ，还是 UDP ，地址都使用元组的形式进行传参"></a>使用地址，无论是 TCP ，还是 UDP ，地址都使用元组的形式进行传参</h3><pre><code>soc = socket()
+soc.bind((&apos;localhost&apos;, 8888))
+</code></pre><h2 id="套接字方法"><a href="#套接字方法" class="headerlink" title="套接字方法"></a>套接字方法</h2><pre><code>s = socket()
+</code></pre><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s.fileno()</td>
+<td>文件操作符</td>
+</tr>
+<tr>
+<td>s.type</td>
+<td>tcp，还是udp</td>
+</tr>
+<tr>
+<td>s.family</td>
+<td>AddressFamily.AF_INET协议类型，</td>
+</tr>
+<tr>
+<td>s.getsockname()</td>
+<td>获取主机地址</td>
+</tr>
+<tr>
+<td>s.getpeername()</td>
+<td>获取accept接收到的地址</td>
+</tr>
+</tbody>
+</table>
+<pre><code>s.setsockopt(level，optname，value)
+    # 协议中的每一层为level项， optname 为变量名称， value 为设定的值
+s.getsockopt(level， optname)
+    # 获取常量名
+</code></pre><h1 id="多任务处理"><a href="#多任务处理" class="headerlink" title="多任务处理"></a>多任务处理</h1><h2 id="IO-密集-与-计算密集"><a href="#IO-密集-与-计算密集" class="headerlink" title="IO 密集 与 计算密集"></a>IO 密集 与 计算密集</h2><ul>
+<li>在计算机中，处理网络，文件类，CPU利用率很低的事件，被称为IO事件</li>
+<li>处理 数值计算，视频音频的大规模处理类的事件被称为cpu密集或计算密集</li>
+</ul>
+<h2 id="IO分类"><a href="#IO分类" class="headerlink" title="IO分类"></a>IO分类</h2><ul>
+<li>阻塞IO</li>
+<li>非阻塞 IO</li>
+<li>IO多路复用</li>
+<li>事件 IO</li>
+<li>异步 IO</li>
+</ul>
+<h1 id="多任务处理-1"><a href="#多任务处理-1" class="headerlink" title="多任务处理"></a>多任务处理</h1><ul>
+<li><p>并发</p>
+<ul>
+<li>计算机处理多个任务时，内核在任务间不断的切换，达到好像在同时运行的效果</li>
+</ul>
+</li>
+<li><p>并行</p>
+<ul>
+<li>多个计算机核心同时处理多个任务，各个任务之间运行没有关系，是并行的关系</li>
+</ul>
+</li>
+</ul>
+<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><ul>
+<li>cpu处理的单位，拥有独立的资源（内存，cpu时间片，相关信息等），是计算机运行时的基本单位，</li>
+<li>在理论上进程中有一个线程，当有多个线程共存于进程时，进程的会分配一小部分资源给线程</li>
+<li>理论上</li>
+</ul>
+<h3 id="僵尸进程"><a href="#僵尸进程" class="headerlink" title="僵尸进程"></a>僵尸进程</h3><ul>
+<li>子进程先于父进程退出，但父进程没有处理子进程的退出，就退出了，使得子进程的一部分资源无法被资源回收</li>
+<li>僵尸进程会占用系统资源，尽量避免僵尸进程的产生</li>
+<li>避免僵尸进程<ol>
+<li>创建二级子进程</li>
+<li>让父进程处理子进程的退出 （wait函数， waitpid 函数）</li>
+</ol>
+</li>
+</ul>
+<h3 id="孤儿进程"><a href="#孤儿进程" class="headerlink" title="孤儿进程"></a>孤儿进程</h3><ul>
+<li>父进程先于子进程退出，使得子进程无法没有父进程，就成为了孤儿进程</li>
+<li>孤儿进程并不是没有父进程，系统进程会收养子进程，成为安全的进程</li>
+</ul>
+<h3 id="multiprocessing-Process-类-Pool-类"><a href="#multiprocessing-Process-类-Pool-类" class="headerlink" title="multiprocessing  Process 类 Pool 类"></a>multiprocessing  Process 类 Pool 类</h3><ul>
+<li><p>Process(name, target, args, kwargs)</p>
+<ul>
+<li>name ： 给创建的进程起一个名字 默认为 Process -1</li>
+<li>target： 使用进程的函数 </li>
+<li>args，kwargs： 元组传参， 字典传参</li>
+</ul>
+</li>
+<li><p>p.start()</p>
+<ul>
+<li>启动子进程，此时进程被创建，是运行态</li>
+</ul>
+</li>
+<li><p>p.join(s)</p>
+<ul>
+<li>阻塞等待默认子进程的退出，回收子进程</li>
+<li>s 默认为阻塞， 设置 s 为超时时间，停止阻塞</li>
+</ul>
+</li>
+<li><p>如果使用多个进程时，有两种方法</p>
+<ol>
+<li>在start 后执行程序</li>
+<li>再次创建一个进程，即同时有三个进程<ol>
+<li>父进程负责回收子进程</li>
+<li>两个子进程互不干扰</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Process 的属性和方法</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性或方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p.is_alive()</td>
+<td>查看进程是否存在</td>
+</tr>
+<tr>
+<td>p.name</td>
+<td>查看进程名</td>
+</tr>
+<tr>
+<td>p.pid</td>
+<td>查看该进程的pid</td>
+</tr>
+<tr>
+<td>p.daemon</td>
+<td>守护进程，默认为 False，设置为 True 时，进程运行完毕会自动回收<br>替代join 功能</td>
+</tr>
+<tr>
+<td>os.getpid()</td>
+<td>查看进程pid</td>
+</tr>
+<tr>
+<td>os.getppid()</td>
+<td>查看父进程的pid</td>
+</tr>
+</tbody>
+</table>
+<h3 id="多进程优缺点"><a href="#多进程优缺点" class="headerlink" title="多进程优缺点"></a>多进程优缺点</h3><ul>
+<li><p>优点</p>
+<ol>
+<li>并行执行多个任务，效率较高</li>
+<li>创建方便</li>
+<li>运行独立，不受其他进程影响</li>
+<li>数据独立，不存在安全问题</li>
+</ol>
+</li>
+<li><p>缺点</p>
+<ol>
+<li>进程的创建与销毁需要消耗大量资源</li>
+<li>进程消耗的资源较多，相当于多线程的20倍</li>
+</ol>
+</li>
+</ul>
+<h3 id="进程池技术-Pool-类"><a href="#进程池技术-Pool-类" class="headerlink" title="进程池技术 Pool 类"></a>进程池技术 Pool 类</h3><ul>
+<li>多个进程创建与销毁，需要系统分配资源进行管理，运行效率较低，消耗的资源也较多</li>
+<li>使用进程池的方式，针对大量进程的操作时，节省系统资源</li>
+</ul>
+<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><ul>
+<li><p>p = Pool(n)</p>
+<ul>
+<li>创建进程池对象</li>
+<li>n 表示一次进程处理的进程数量，一般与cpu 核心数相等</li>
+</ul>
+</li>
+<li><p>p.apply_async(func, args, kwargs)</p>
+<ul>
+<li>func 要放入进程池的事件函数</li>
+<li>args 元组参数</li>
+<li>kwargs 字典参数</li>
+</ul>
+</li>
+<li><p>放入进程池函数的方法有很多，map，map_async, apply</p>
+</li>
+<li><p>p.close()</p>
+<ul>
+<li>停止添加进程池函数，并使得进程池开始运行</li>
+</ul>
+</li>
+<li><p>p.join()</p>
+<ul>
+<li>阻塞等待所有进程退出，并回收所有资源</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程间通信-IPC"><a href="#进程间通信-IPC" class="headerlink" title="进程间通信 IPC"></a>进程间通信 IPC</h3><h4 id="管道通信"><a href="#管道通信" class="headerlink" title="管道通信"></a>管道通信</h4><pre><code>- multiprocessing  Pipe
+- f1, f2 = Pipe(duplex)
+    - duplex == 双工
+    - 单工 （设置为 False）
+        单工就是指A只能发信号，而B只能接收信号，通信是单向的，就象灯塔之于航船——灯塔发出光信号而航船只能接收信号以确保自己行驶在正确的航线上。
+    - 半双工 （不使用）
+        指一个时间段内只有一个动作发生，举个简单例子，一天窄窄的马路，同时只能有一辆车通过，当目前有两量车对开，这种情况下就只能一辆先过，等到头儿后另一辆再开，这个例子就形象的说明了半双工的原理。早期的对讲机、以及早期集线器等设备都是实行半双工的产品。随着技术的不断进步，半双工会逐渐退出历史舞台。
+    - 全双工 （设置为 True）
+        Full－Duplex Transmissions 
+        指交换机在发送数据的同时也能够接收数据，两者同步进行，这好像我们平时打电话一样，说话的同时也能够听到对方的声音。目前的交换机都支持全双工。
+    - 设置为False时，f1 只能 读， f2 只能写
+- f1.recv()
+    - 读取信息（每次读取一条）
+    - 默认阻塞
+- f2.send(data)
+    - 写入信息 (字符类型，任意类型)
+</code></pre><h4 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h4><pre><code>- multiprocessing Queue
+
+- q = Queue（maxsize = 0）
+    功能 ： 创建一个消息队列
+    参数 ： maxsize 默认为0     表示根据系统分配空间存储消息
+                                     &gt; 0 表示队列最多存放多少条消息
+    返回值 ： 返回消息队列对象
+
+- q.put(data,[block,timeout])  
+    功能 ： 向队列中存放消息 
+    参数 ： data      表示存入的消息 （支持Python数据类型）
+         block     默认为True  表示阻塞【当队列满时会阻塞】
+                   设置为False  表示非阻塞【当队列满时不阻塞，会报异常】
+         timeout    当block为True时表示超市时间
+
+- data = q.get([block,timeout])
+    功能 ： 从队列中获取消息
+    参数 ： block     默认为True  表示阻塞【当队列空时会阻塞】
+                   设置为False  表示非阻塞【当队列空时不阻塞，会报异常】
+    返回值 ：取出的消息
+
+- q.full()
+    功能： 判断队列是否为满  满返回True
+
+- q.empty()
+    功能： 判断队列是否为空  空返回True
+
+- q.qsize()
+    功能： 得到当前队列中消息的个数
+
+- q.close() 
+    功能： 关闭队列
+</code></pre><h4 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h4><pre><code>- 在内存中开辟一段空间，存储数据，多个进程可见，每次写入共享内存
+- 对内存格式化较少，存取速度快，
+- 需要对共享内存加锁，才能保证数据安全
+- from multiprocessing import Value，Array
+- obj = value(ctype, obj)
+    - c 类型对照 ctype表
+    - signed int ‘i’
+    - char &apos;c&apos; char
+    - 
+- obj.value
+    - 表示共享内存中的值，对其修改或者使用即可共享内存的值
+
+- Array
+    - obj = Array(ctype, data)
+        - ctype :: c类型
+        - obj :: 存入共享内存的数据
+            1. 列表    将 列表存入共享内存， 列表内中数据类型需要一致
+            2. 正整数  则表示开辟一个多大的序列空间
+    - 在使用时， 需要将obj 作为参数传入 进程中， 方能进行操作
+
+            arr = Array(&apos;i&apos;, [1, 2, 3, 4, 5])
+            pro = Process(target=client, args=(arr, ))
+</code></pre><h4 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h4><pre><code>- 在linux 使用体验较好
+- import signal
+- signal.signal(signum, handler)
+    - signum 处理的信号   kill -l 查看linux 信号
+    - SIGABRT, SIGFPE, SIGILL, SIGINT, SIGSEGV, SIGTERM  windows常用信号
+    - handler 接收该信号的处理方式
+        - SIG_DFL    默认处理方式
+        - SIG_iGN    忽略【ignore】
+        - function 自定处理该信号
+            - func(sig, frame)  # 自定信号传入两个参数
+                - sig   信号值
+                - frame 信号对象
+- signal.alarm(n)
+    - 过 n 秒后发送 SIGALRM 信号
+- signal.pause()
+    - 等待信号
+</code></pre><ul>
+<li><p>信号量</p>
+<ul>
+<li><p>sem = Semaphore(2)  # 创建信号量对象，设置初始信号量</p>
+<pre><code>def fun():
+    print(&apos;进程%d等待信号量&apos;% os.getpid())
+
+    sem.acquire()  # 信号减一 
+
+    print(&apos;进程%d消耗信号量&apos;% os.getpid())
+    sleep(5)
+
+    print(&apos;进程%d添加信号量&apos;% os.getpid())
+    sem.release()  # 信号加一
+</code></pre></li>
+<li><p>sem.get_value()  获取当前信号量</p>
+</li>
+<li><p>sem.acquire()  </p>
+<ul>
+<li>功能 ：将信号量  减一  信号量为0时调用会阻塞</li>
+</ul>
+</li>
+<li><p>sem.release()  </p>
+<ul>
+<li>功能 ：将信号量  加一</li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>在 windows 上使用需要传参进函数方能使用</li>
+<li>在 linux 不需要</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>套接字</p>
+</li>
+</ul>
+<h4 id="同步-异步"><a href="#同步-异步" class="headerlink" title="同步 异步"></a>同步 异步</h4><ul>
+<li><p>Event事件</p>
+<ul>
+<li><p>创建 事件对象</p>
+<pre><code>e = Event()
+</code></pre><p>-提供事件阻塞</p>
+<pre><code>e.wait([timeout])
+</code></pre></li>
+<li><p>事件设置：e处于设置状态，e.wait不再阻塞</p>
+<pre><code>e.set()
+</code></pre></li>
+<li><p>事件清除：e处于未设置状态，e.wait则阻塞</p>
+<pre><code>e.clear()
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h4 id="同步-互斥"><a href="#同步-互斥" class="headerlink" title="同步 互斥"></a>同步 互斥</h4><ul>
+<li>锁 Lock</li>
+<li>进程锁 multiprocessing Lock <ul>
+<li>可与 共享内存 进行配合使用，解决资源共享的问题</li>
+<li>进程 与 锁之间的关系，<ul>
+<li>锁就像一个进程管理器</li>
+<li>当一个进程获取到锁后，并进行加锁(acquire)，则另一进程会处于阻塞状态</li>
+<li>当该进程处理完毕后，进程对锁进行释放（release）,另一进程会继续运行</li>
+<li>多进程都应该在相同位置加上锁，进行对资源的管理</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ul>
+<li>treading import Thread</li>
+<li>Thread(name, target, args, kwargs)</li>
+<li>start()</li>
+<li>join()</li>
+<li>t.is_alive()     查看线程状态</li>
+<li>t.name        查看线程名称 </li>
+<li>t.setName() 设置线程名称</li>
+<li>threading.currentThread()  得到当前线程的线程对象</li>
+<li>daemon</li>
+<li>setdaemon(True)</li>
+<li></li>
+</ul>
+<h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><ul>
+<li>定义：</li>
+<li>协程  微线程，协程本质只有一个线程在运行</li>
+<li>功能原理：</li>
+<li><p>通过应用层程序，记录上下文栈区，实现在程序执行过程中的跳跃，选择可以不阻塞的部分执行，从而提高IO的执行效率</p>
+<pre><code>优点：
+    1、资源消耗很少
+    2、无需多线程那样来回切换的开销
+    3、无需进行同步互斥操作
+    4、IO并发性好
+    缺点：
+        1、无法利用计算机的多核资源
+        2、程序不能够一个客户端单独长时间占有服务器
+    底层实现原理：
+        yield        协程的基本实现关键字
+</code></pre></li>
+<li><p>自定义协程</p>
+<ul>
+<li>greenlet<ul>
+<li>g1 = greenlet(test1)</li>
+<li>g2 = greenlet(test2) # 创建协程对象</li>
+<li>g1.switch() # 切换到g2 绑定的程序，</li>
+<li></li>
+</ul>
+</li>
+<li>gevent</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络编程/" rel="tag"># 网络编程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/22/python 爬虫库/" rel="next" title="python 常用爬虫库">
+                <i class="fa fa-chevron-left"></i> python 常用爬虫库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/29/linux-command/" rel="prev" title="linux command">
+                linux command <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Laurel-rao</p>
+              <p class="site-description motion-element" itemprop="description">Laurel-rao 博客网站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络基础"><span class="nav-number">1.</span> <span class="nav-text">网络基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI-七层协议"><span class="nav-number">1.1.</span> <span class="nav-text">OSI 七层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#四层模型"><span class="nav-number">1.1.1.</span> <span class="nav-text">四层模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五层模型"><span class="nav-number">1.1.2.</span> <span class="nav-text">五层模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各层协议"><span class="nav-number">1.1.3.</span> <span class="nav-text">各层协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三次握手"><span class="nav-number">1.1.4.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四次握手"><span class="nav-number">1.1.5.</span> <span class="nav-text">四次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSI-模型特点"><span class="nav-number">1.1.6.</span> <span class="nav-text">OSI 模型特点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-UDP"><span class="nav-number">2.</span> <span class="nav-text">TCP UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#套接字常用方法"><span class="nav-number">2.1.</span> <span class="nav-text">套接字常用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP套接字"><span class="nav-number">2.2.</span> <span class="nav-text">UDP套接字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用地址，无论是-TCP-，还是-UDP-，地址都使用元组的形式进行传参"><span class="nav-number">2.2.1.</span> <span class="nav-text">使用地址，无论是 TCP ，还是 UDP ，地址都使用元组的形式进行传参</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#套接字方法"><span class="nav-number">2.3.</span> <span class="nav-text">套接字方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多任务处理"><span class="nav-number">3.</span> <span class="nav-text">多任务处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IO-密集-与-计算密集"><span class="nav-number">3.1.</span> <span class="nav-text">IO 密集 与 计算密集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO分类"><span class="nav-number">3.2.</span> <span class="nav-text">IO分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多任务处理-1"><span class="nav-number">4.</span> <span class="nav-text">多任务处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">4.1.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#僵尸进程"><span class="nav-number">4.1.1.</span> <span class="nav-text">僵尸进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#孤儿进程"><span class="nav-number">4.1.2.</span> <span class="nav-text">孤儿进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiprocessing-Process-类-Pool-类"><span class="nav-number">4.1.3.</span> <span class="nav-text">multiprocessing  Process 类 Pool 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多进程优缺点"><span class="nav-number">4.1.4.</span> <span class="nav-text">多进程优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程池技术-Pool-类"><span class="nav-number">4.1.5.</span> <span class="nav-text">进程池技术 Pool 类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用方式"><span class="nav-number">4.1.5.1.</span> <span class="nav-text">使用方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程间通信-IPC"><span class="nav-number">4.1.6.</span> <span class="nav-text">进程间通信 IPC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#管道通信"><span class="nav-number">4.1.6.1.</span> <span class="nav-text">管道通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息队列"><span class="nav-number">4.1.6.2.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共享内存"><span class="nav-number">4.1.6.3.</span> <span class="nav-text">共享内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信号"><span class="nav-number">4.1.6.4.</span> <span class="nav-text">信号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步-异步"><span class="nav-number">4.1.6.5.</span> <span class="nav-text">同步 异步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步-互斥"><span class="nav-number">4.1.6.6.</span> <span class="nav-text">同步 互斥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">4.2.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协程"><span class="nav-number">4.3.</span> <span class="nav-text">协程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Laurel-rao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

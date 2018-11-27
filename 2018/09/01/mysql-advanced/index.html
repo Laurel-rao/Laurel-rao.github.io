@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mysql_advanced,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. 视图 视图介绍  视图是一种抽象行为，将查询的结果作为一张表进行存储，叫做视图 视图是一种面向函数的行为，将经常查询的表格创建视图存储下来 可以提升查询的效率，因为视图已经在缓存层面进行存储，所以不需要解析树解析 减少一大段的sql 语句的编写，减少出错的概率     查看视图 show table status where comment = &amp;apos;view&amp;apos;；  创建视图">
+<meta name="keywords" content="mysql_advanced">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql-advanced">
+<meta property="og:url" content="http://yoursite.com/2018/09/01/mysql-advanced/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1. 视图 视图介绍  视图是一种抽象行为，将查询的结果作为一张表进行存储，叫做视图 视图是一种面向函数的行为，将经常查询的表格创建视图存储下来 可以提升查询的效率，因为视图已经在缓存层面进行存储，所以不需要解析树解析 减少一大段的sql 语句的编写，减少出错的概率     查看视图 show table status where comment = &amp;apos;view&amp;apos;；  创建视图">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-11-21T01:04:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql-advanced">
+<meta name="twitter:description" content="1. 视图 视图介绍  视图是一种抽象行为，将查询的结果作为一张表进行存储，叫做视图 视图是一种面向函数的行为，将经常查询的表格创建视图存储下来 可以提升查询的效率，因为视图已经在缓存层面进行存储，所以不需要解析树解析 减少一大段的sql 语句的编写，减少出错的概率     查看视图 show table status where comment = &amp;apos;view&amp;apos;；  创建视图">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/01/mysql-advanced/">
+
+
+
+
+
+  <title>mysql-advanced | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">岁月如风，吹散青春</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/01/mysql-advanced/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Laurel-rao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql-advanced</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-01T09:31:17+08:00">
+                2018-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-视图"><a href="#1-视图" class="headerlink" title="1. 视图"></a>1. 视图</h1><ul>
+<li><p>视图介绍</p>
+<ul>
+<li>视图是一种抽象行为，将查询的结果作为一张表进行存储，叫做视图</li>
+<li>视图是一种面向函数的行为，将经常查询的表格创建视图存储下来<ul>
+<li>可以提升查询的效率，因为视图已经在缓存层面进行存储，所以不需要解析树解析</li>
+<li>减少一大段的sql 语句的编写，减少出错的概率</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查看视图</p>
+<pre><code>show table status where comment = &apos;view&apos;；
+</code></pre></li>
+<li><p>创建视图</p>
+<pre><code>create view xxx as select * from table;
+</code></pre></li>
+<li><p>查看视图内容</p>
+<pre><code>select * from xxx;
+</code></pre></li>
+<li><p>作为条件</p>
+<pre><code>select * from table where id = (select * from xxx);
+</code></pre></li>
+</ul>
+<h1 id="2-存储过程"><a href="#2-存储过程" class="headerlink" title="2. 存储过程"></a>2. 存储过程</h1><h1 id="3-预处理，范式规范"><a href="#3-预处理，范式规范" class="headerlink" title="3. 预处理，范式规范"></a>3. 预处理，范式规范</h1><h1 id="4-查询"><a href="#4-查询" class="headerlink" title="4. 查询"></a>4. 查询</h1><h2 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h2><ol>
+<li><p>定义</p>
+<ol>
+<li>嵌套在其他查询中的查询， 通常使用 where 语句 和 in 搭配()使用</li>
+<li>当嵌套层数过深时，性能会下降</li>
+</ol>
+</li>
+<li><p>使用举例</p>
+<pre><code>select * from a where age in (select age from b);
+</code></pre></li>
+</ol>
+<h2 id="联结"><a href="#联结" class="headerlink" title="联结"></a>联结</h2><h1 id="5-常用函数"><a href="#5-常用函数" class="headerlink" title="5. 常用函数"></a>5. 常用函数</h1><ol>
+<li><p>按照拼音排序 （convert）</p>
+<pre><code>order by convert(name using gbk)；
+</code></pre></li>
+<li><p>查询时拼接字段(concat)，英文(concatenate)</p>
+<pre><code>select concat(name, &quot;--&quot;, age) from ...
+</code></pre></li>
+<li><p>使用正则表达式进行匹配(regexp)</p>
+<ol>
+<li><p>使用说明</p>
+<ol>
+<li>正则表达式，相较于模糊查询 like，功能更强大，但性能较低</li>
+</ol>
+</li>
+<li><p>使用举例</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">		where name regexp &quot;bob|maria&quot;;</span><br><span class="line">		```	</span><br><span class="line">	3. 正则语法</span><br><span class="line">		1. “a|b” 表示  or ,a or b</span><br><span class="line">		2. [0,1,2] == [0-2], 表示其中任意一个</span><br><span class="line">		3. &quot;a&#123;1,2&#125;&quot;, 表示 前面字符的数量， 一个或两个a</span><br><span class="line">		4. “a&#123;1, &#125;”, 表示 前面字符至少有一个</span><br><span class="line">		5. . 表示除空格字符外的所有字符  </span><br><span class="line">		6. * 表示前面字符数量 为 0 或 n个</span><br><span class="line">		7. ? 表示前面字符数量 为 0 或 1个 等同于&#123; ,1&#125;</span><br><span class="line">		8. + 表示前面字符数量 为 1 或 n个 等同于&#123;1, &#125;</span><br><span class="line">		9. \\ 表示 转义字符 \\, 查找&quot;\&quot; 应表示为 “\\\” </span><br><span class="line"></span><br><span class="line">4. 将时间戳转换为 字符串形式（ from_unixtime）</span><br><span class="line">	</span><br><span class="line">	```update a set a_time = from_unixtime(b_time);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="6-数据库备份"><a href="#6-数据库备份" class="headerlink" title="6. 数据库备份"></a>6. 数据库备份</h1><ol>
+<li><p>数据库使用 命令行mysqldumps 备份方法和 客户端内 交互下file备份</p>
+<ol>
+<li><p>mysqldumps </p>
+</li>
+<li><p>file备份</p>
+<ol>
+<li><p>使用命令<code>select * from &lt;tablename&gt; into outfile &#39;&lt;path&gt;&#39; [options]</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from &lt;tablename&gt; into outfile &apos;&lt;path&gt;&apos; fileds terminated by &apos;&apos; enclosed by &apos;&apos;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>选项讲解</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fields terminated by ‘字符’</td>
+<td>字段分隔符，默认字符为制表符’\t’</td>
+</tr>
+<tr>
+<td>fields [optionally] enclosed by ‘单字符’</td>
+<td>字段引用符，加上optionally后在数字类型上不会有引用符号</td>
+</tr>
+<tr>
+<td>fields escaped by ‘单字符’</td>
+<td>转义字符，默认为’\’</td>
+</tr>
+<tr>
+<td>lines starting by ‘字符’</td>
+<td>每行前都加此支付，默认为空</td>
+</tr>
+<tr>
+<td>lines terminated by ‘字符’</td>
+<td>行结束符，默认为’\n’</td>
+</tr>
+</tbody>
+</table>
+<pre><code>2. bug解决    
+    1. mysql 有一个关于文件备份的设置`secure_file_priv`
+    2. 使用 `show variables like &quot;%secure%&quot;; `查看
+        1. 当 值为 null 时，表示文件导入导出都被禁止
+        2. 值为 一个路径是，表示该路径下为安全路径，可以导入导出
+    3. 使用 set secure_file_priv = ‘/xxx’， 你会发现它报错了，原因是因为他是只读变量
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1238 (HY000): Variable &apos;secure_file_priv&apos; is a read only variable</span><br></pre></td></tr></table></figure>
+
+    4. 所以，正确的方式是到配置文件中修改
+
+        &gt; 比较坑爹的是，Mac os 居然没有配置文件，然后百度了一圈，从网上复制了文件，保存下来
+
+        1. 修改之前你需要了解下面几个问题
+            1. 配置文件叫啥，他又放在哪里
+                1. win ==&gt;  my.ini 被放在安装目录的根目录中
+                2. linux/ mac  ==&gt; my.cnf 被放在/etc/my.cnf 或者 /etc/mysql/my.cnf
+
+            2. 配置文件格式是啥，大致有用的配置又该如何修改呢
+
+                1. 配置文件一般有三部分组成
+
+                    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># xxxx   这是注释</span><br><span class="line">[mysqld] 这是属于哪个部分的</span><br><span class="line">port = 3306  这才是真正的变量</span><br></pre></td></tr></table></figure>
+
+                2. 配置文件的几个部分介绍
+                    - [client]  #客户端设置，即客户端默认的连接参数
+                    - [mysqld]  #服务端基本设置
+                    - [mysqldump] # 关于 mysqldump的设置
+                    - [mysql]  # 
+                    - [myisamchk]  #isamchk数据检测恢复工具
+                    - [mysqlhotcopy]  # 热备份
+
+                3. secure_file_priv 放在 [mysqld] 下
+
+                    &gt; 设置为 `secure_file_priv=&apos;\var\lib\mysql&apos;`
+
+
+            3. 改完了，怎么让配置文件生效呢
+
+                &gt; 重启mysql 服务
+
+        2. 当所有的操作完成以后，打开客户端，查看变量是否变化了
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+--------------------------+------------------------------+</span><br><span class="line">| Variable_name            | Value                        |</span><br><span class="line">+--------------------------+------------------------------+</span><br><span class="line">| require_secure_transport | OFF                          |</span><br><span class="line">| secure_auth              | ON                           |</span><br><span class="line">| secure_file_priv         | /private/var/lib/mysql-file/ |</span><br><span class="line">+--------------------------+------------------------------+</span><br></pre></td></tr></table></figure>
+
+            - 以private开头，这是正常的，只需要关心后面的是否正确就行了    
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql-advanced/" rel="tag"># mysql_advanced</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/30/mysql-train/" rel="next" title="mysql-train">
+                <i class="fa fa-chevron-left"></i> mysql-train
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/01/English/" rel="prev" title="English-basic">
+                English-basic <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Laurel-rao</p>
+              <p class="site-description motion-element" itemprop="description">Laurel-rao 博客网站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-视图"><span class="nav-number">1.</span> <span class="nav-text">1. 视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-存储过程"><span class="nav-number">2.</span> <span class="nav-text">2. 存储过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-预处理，范式规范"><span class="nav-number">3.</span> <span class="nav-text">3. 预处理，范式规范</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-查询"><span class="nav-number">4.</span> <span class="nav-text">4. 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询"><span class="nav-number">4.1.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联结"><span class="nav-number">4.2.</span> <span class="nav-text">联结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-常用函数"><span class="nav-number">5.</span> <span class="nav-text">5. 常用函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-数据库备份"><span class="nav-number">6.</span> <span class="nav-text">6. 数据库备份</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Laurel-rao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

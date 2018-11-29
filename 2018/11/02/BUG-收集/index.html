@@ -83,7 +83,7 @@
 <meta name="keywords" content="code&#39;s bug">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BUG 收集">
-<meta property="og:url" content="http://yoursite.com/2018/11/02/BUG-收集/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/11/02/Bug-收集/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="使用 restframework 时， views 继承自 APIView  bug 描述  前后分离时，除get 以外的请求都不能访问，得到403 forbidden 且使用postman，请求无异常 且框架中的csrf中间件无法限制 继承APIView的 view类(csrf 中间件的有无不影响post等访问) 当开启csrf 中间件时，该post又可以发送了   问题剖析  APIView">
 <meta property="og:locale" content="zh-cn">
@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/08/i71Dkn.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/08/i71rYq.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/08/i71One.md.png">
-<meta property="og:updated_time" content="2018-11-22T07:10:54.000Z">
+<meta property="og:updated_time" content="2018-11-29T02:05:22.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BUG 收集">
 <meta name="twitter:description" content="使用 restframework 时， views 继承自 APIView  bug 描述  前后分离时，除get 以外的请求都不能访问，得到403 forbidden 且使用postman，请求无异常 且框架中的csrf中间件无法限制 继承APIView的 view类(csrf 中间件的有无不影响post等访问) 当开启csrf 中间件时，该post又可以发送了   问题剖析  APIView">
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/02/BUG-收集/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/02/Bug-收集/">
 
 
 
@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/BUG-收集/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/Bug-收集/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Laurel-rao">
@@ -291,8 +291,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程心得/" itemprop="url" rel="index">
-                    <span itemprop="name">编程心得</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -446,7 +446,20 @@
 3. 问题所在，字符集编码默认是 ‘utf-8’, 所以换用字符集为 &apos;gbk&apos;, 有可能成功
 
     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.body.decode(encoding=&apos;gbk&apos;)</span><br></pre></td></tr></table></figure>
-</code></pre>
+</code></pre><ol start="7">
+<li><p>使用 django  migrate 命令报错</p>
+<ol>
+<li><p>django 2.1 版本后不再支持 5.6 以下的 mysql</p>
+<ul>
+<li>syntax error <code>(6)NOT NULL</code></li>
+</ul>
+</li>
+<li><p>升级mysql </p>
+</li>
+</ol>
+</li>
+</ol>
+
       
     </div>
     
@@ -556,7 +569,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -567,7 +580,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -578,7 +591,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

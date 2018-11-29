@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="服务器管理,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="tornado笔记  tornado介绍1.基础配置from tornado.httpserver import HTTPServer from tornado.ioloop import IOLoop from tornado.options import define, parse_config_file, options from tornado.web import Applicatio">
+<meta name="keywords" content="服务器管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务器框架tornado笔记">
+<meta property="og:url" content="http://yoursite.com/2018/08/09/web-tornado/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="tornado笔记  tornado介绍1.基础配置from tornado.httpserver import HTTPServer from tornado.ioloop import IOLoop from tornado.options import define, parse_config_file, options from tornado.web import Applicatio">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-11-29T02:17:28.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="服务器框架tornado笔记">
+<meta name="twitter:description" content="tornado笔记  tornado介绍1.基础配置from tornado.httpserver import HTTPServer from tornado.ioloop import IOLoop from tornado.options import define, parse_config_file, options from tornado.web import Applicatio">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/09/web-tornado/">
+
+
+
+
+
+  <title>服务器框架tornado笔记 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">岁月如风，吹散青春</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/web-tornado/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Laurel-rao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">服务器框架tornado笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-09T19:31:52+08:00">
+                2018-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/web-framework/" itemprop="url" rel="index">
+                    <span itemprop="name">web_framework</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><center><h1> tornado笔记 </h1><center></center></center></p>
+<h1 id="tornado介绍"><a href="#tornado介绍" class="headerlink" title="tornado介绍"></a>tornado介绍</h1><h1 id="1-基础配置"><a href="#1-基础配置" class="headerlink" title="1.基础配置"></a>1.基础配置</h1><pre><code>from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
+from tornado.options import define, parse_config_file, options
+from tornado.web import Application, RequestHandler
+
+
+class IndexHandler(RequestHandler):
+    def get(self, *args, **kwargs):
+        self.write(&apos;hello myfirst tornado framework&apos;)
+
+    def post(self, *args, **kwargs):
+        pass
+
+
+define(&apos;port&apos;, type=int, default=8888)
+parse_config_file(&apos;../config/config&apos;)
+
+app = Application([(&apos;/&apos;, IndexHandler)])
+
+# 创建服务器对象
+server = HTTPServer(app)
+
+# 设置端口号
+server.listen(options.port)
+# 服务器启动
+IOLoop.current().start()
+</code></pre><h2 id="2-配置文件"><a href="#2-配置文件" class="headerlink" title="2.配置文件"></a>2.配置文件</h2><p>创建config文件夹<br>创建config文件</p>
+<p>定义 变量</p>
+<pre><code>define(&apos;变量名&apos;，type=类型， default=默认值)
+define(&apos;port&apos;, type=int, default=8888)
+</code></pre><p>导入文件—–文件路径</p>
+<pre><code>parse_config_file(&apos;../config/config&apos;)    
+</code></pre><p>使用文件中的变量</p>
+<pre><code>server.listen(options.port)
+server.listen(options.变量名)
+</code></pre><h2 id="3-配置路由列表"><a href="#3-配置路由列表" class="headerlink" title="3.配置路由列表"></a>3.配置路由列表</h2><pre><code>app = Application([
+    (&apos;/&apos;, IndexHandler),
+    (&apos;&apos;)
+])
+</code></pre><ul>
+<li>Application 里面传入一个列表，列表中传入一个二元元组</li>
+<li>二元元组内，前面匹配url，后面是处理请求的类</li>
+</ul>
+<hr>
+<h1 id="request"><a href="#request" class="headerlink" title="request"></a>request</h1><ul>
+<li>处理请求类，继承自RequestHandler </li>
+<li>需要重写get，post 方法 </li>
+<li>该方法，使用万能形参  == *args，**kwargs</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class IndexHandler(RequestHandler):</span><br><span class="line">   def get(self, *args, **kwargs):</span><br><span class="line">       self.write(</span><br><span class="line">           &apos;&apos;&apos;</span><br><span class="line">           &lt;a href=/login&gt;登录&lt;/a&gt;</span><br><span class="line">           &apos;&apos;&apos;</span><br><span class="line">       )</span><br><span class="line"></span><br><span class="line">   def post(self, *args, **kwargs):</span><br><span class="line">       pass</span><br></pre></td></tr></table></figure>
+<ul>
+<li>该类包含了除了request， 以及响应 response</li>
+<li><strong>处理请求</strong><ul>
+<li>接收参数 1<ul>
+<li>get<ul>
+<li>get_query_argument    接收最后一个参数</li>
+<li>get_query_arguments   接收参数列表</li>
+</ul>
+</li>
+<li>post<ul>
+<li>get_argument    接收最后一个参数</li>
+<li>get_arguments   接收参数列表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>接收参数2<ul>
+<li>通过HTTPServerRequest对象 -- self.request</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self.request.method</td>
+<td>http的请求头;get, post等</td>
+</tr>
+<tr>
+<td>self.reuqest.uri</td>
+<td>客户端请求完整的uri</td>
+</tr>
+<tr>
+<td>self.request.path</td>
+<td>uri的路径名,不包含查询的字符串</td>
+</tr>
+<tr>
+<td>self.request.query</td>
+<td>uri中的查询字符串</td>
+</tr>
+<tr>
+<td>self.request.version</td>
+<td>http/1.1</td>
+</tr>
+<tr>
+<td>self.request.headers</td>
+<td>请求头</td>
+</tr>
+<tr>
+<td>self.requset.body</td>
+<td>字符串的消息</td>
+</tr>
+<tr>
+<td>self.request.remote_ip</td>
+<td>客户端请求的ip</td>
+</tr>
+<tr>
+<td>self.request.protocol</td>
+<td>http的协议http or https</td>
+</tr>
+<tr>
+<td>self.request.host</td>
+<td>请求消息的主机名</td>
+</tr>
+<tr>
+<td>self.request.files</td>
+<td>以字典的方式表达客户端上传的文件;</td>
+</tr>
+<tr>
+<td>self.request.cookies</td>
+<td>客户端的cookies字典</td>
+</tr>
+<tr>
+<td>self.request.arguments</td>
+<td>客户端提交的参数</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<ul>
+<li><strong>返回响应</strong><ul>
+<li>self.write(<str>)</str></li>
+<li>self.redirect(<url +="" ?key="value">)<ul>
+<li>重定向</li>
+<li>拼接字符串进行传参</li>
+</ul>
+</url></li>
+<li>self.render(templates, key=value, key=value)<ul>
+<li>在render的参数内对模板进行传参</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>可以利用正则表达式匹配具有一定规律性的所有路径<br> 路径的具体内容会以参数的形式传入 get/post 方法，参数名称可以随意指定，但是最好给参数指定默认值，一般默认值为None</li>
+<li>例如：<br> （‘/python/([0-9a-zA-Z]+/)’）</li>
+</ol>
+<h1 id="钩子方法"><a href="#钩子方法" class="headerlink" title="钩子方法"></a>钩子方法</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<li>框架通过两个类的继承关系，将框架代码与使用者的代码结合起来</li>
+<li>完成实际的复杂的业务，</li>
+<li>tornado框架中，从获取请求到生成响应中间有很多步骤，</li>
+<li>用户通过重写 钩子（hook）方法 来完成具体业务 </li>
+</ul>
+<h2 id="基本RequestHandler中的钩子方法"><a href="#基本RequestHandler中的钩子方法" class="headerlink" title="基本RequestHandler中的钩子方法"></a>基本RequestHandler中的钩子方法</h2><blockquote>
+<p>set_default_headers</p>
+</blockquote>
+<ul>
+<li>设置响应headers    </li>
+</ul>
+<blockquote>
+<p>initialize</p>
+</blockquote>
+<ul>
+<li>接收路由列表中的初始化参数</li>
+</ul>
+<blockquote>
+<p>get / post</p>
+</blockquote>
+<ul>
+<li>生成响应内容</li>
+</ul>
+<blockquote>
+<p>on_finish</p>
+</blockquote>
+<ul>
+<li>当响应完成执行该函数</li>
+<li>可用来释放或关闭资源</li>
+</ul>
+<blockquote>
+<p>write_error</p>
+</blockquote>
+<ul>
+<li>当send_error 方法被调用时</li>
+<li>会触发父类中的 write_error，</li>
+<li><p>可重写该方法，默认传入 send_error 中的参数</p>
+<pre><code>def write_error(self, status_code, **kwargs):
+    if status_code == 200 :
+        self.write(&apos;&lt;span style=color:red;font-size:20;&gt;\
+                    这是一个及其恐怖的错误&lt;/span&gt;&apos;)
+    else:
+        # 对于非 200 的状态码，调用父类原有的错误提示
+        super().write_error(status_code, **kwargs)
+</code></pre></li>
+</ul>
+<h1 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h1><h2 id="自定义状态码"><a href="#自定义状态码" class="headerlink" title="自定义状态码"></a>自定义状态码</h2><pre><code>self.set_status(888, &apos;funny&apos;)
+</code></pre><ul>
+<li>调用set_status(状态码， ‘状态码描述’)设置响应行（状态码）</li>
+<li>Http协议不存在的协议码， 慎用，必要时，在项目文档中，描述该状态码</li>
+</ul>
+<h2 id="自定义错误页面"><a href="#自定义错误页面" class="headerlink" title="自定义错误页面"></a>自定义错误页面</h2><pre><code>self.send_error(404)
+# 参数：状态码 404 500
+ # 可重写 write_error方法(self, status, **kwargs)
+</code></pre><ul>
+<li>write_error 产生错误页面</li>
+<li>改写时，注意调用父类方法的原有逻辑，否则所有页面都使用该页面</li>
+</ul>
+<h1 id="response"><a href="#response" class="headerlink" title="response"></a>response</h1><h2 id="json字符串"><a href="#json字符串" class="headerlink" title="json字符串"></a>json字符串</h2><h3 id="使用json-dumps-转换字典-再传入jsonstr"><a href="#使用json-dumps-转换字典-再传入jsonstr" class="headerlink" title="使用json.dumps 转换字典 再传入jsonstr"></a>使用json.dumps 转换字典 再传入jsonstr</h3><ul>
+<li><p>默认的响应头为content-type:text/html</p>
+</li>
+<li><p>使用json传入数据时，需要将headers 修改为</p>
+</li>
+<li><p>content-type: application/json;charset:utf-8</p>
+</li>
+</ul>
+<h3 id="直接传入-字典-推荐"><a href="#直接传入-字典-推荐" class="headerlink" title="直接传入 字典  == 推荐"></a>直接传入 字典  == 推荐</h3><ul>
+<li><p>tornado 自动将 python 字典 转化为 json 字符串 交给客户端</p>
+</li>
+<li><p>django 使用的是 json ，不支持 字典直接传入</p>
+</li>
+<li><p>content-type: application/json;charset:utf-8</p>
+</li>
+</ul>
+<h2 id="模板页面-templates"><a href="#模板页面-templates" class="headerlink" title="模板页面 templates"></a>模板页面 templates</h2><blockquote>
+<p> 本质上是一个html网页， 但是可以传入参数 以及 模板继承</p>
+</blockquote>
+<ol>
+<li>创建模板文件夹路径  mytemplates</li>
+<li>配置模板路径</li>
+<li><p>在 Application中传参 ， template_path = path</p>
+<pre><code>app = Application([
+(&apos;/&apos;, IndexHandler),
+(&apos;/login&apos;, LoginHandler),
+(&apos;/blog&apos;, BlogHandler, {&apos;date&apos;:&apos;day2&apos;, &apos;subject&apos;:&apos;response&apos;}),],
+template_path = &apos;mytemplates&apos;)
+</code></pre></li>
+<li><p>使用模板（模板不能加注释）</p>
+<ul>
+<li>render将html页面转为字符串，再调用write写入缓冲区后，</li>
+<li>等待finish方法将缓冲区中的字符串写入response<pre><code>在 get 或 post 中
+self.render(&apos;index.html&apos;, **kwargs)
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h2 id="模板详解"><a href="#模板详解" class="headerlink" title="模板详解"></a>模板详解</h2><h3 id="render函数"><a href="#render函数" class="headerlink" title="render函数"></a>render函数</h3><pre><code>self.render(&apos;index.html&apos;, name= 12, age=16, myfunc=self.xxx)
+</code></pre><h3 id="html中传参"><a href="#html中传参" class="headerlink" title="html中传参"></a>html中传参</h3><ul>
+<li><p>{&#123; &#125; } 中可以传入参数，语法与python一致</p>
+</li>
+<li><p>{&#123; 变量名}} </p>
+   
+</li>
+<li><p>{&#123; a + b}}</p>
+<pre><code>{{ age + 10}}
+</code></pre></li>
+<li><p>{&#123; 函数名(参数列表)}}</p>
+<pre><code>{{ myfunc((a, b))}}
+</code></pre></li>
+</ul>
+<h3 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h3><ul>
+<li>for i  in xx</li>
+</ul>
+<pre><code># 在get/post中
+ages = [1,2,43,5]
+self.render(&apos;blog.html&apos;, ages = ages)
+
+# 在html页面中
+{% for i in ages %}
+    &lt;p&gt;{{ i}}&lt;/p&gt;
+{% end %}
+
+# 使用python内建方法
+{% for i, age in enumerate(ages) %}
+    &lt;p&gt;{{ i}}&lt;/p&gt;
+    &lt;h1&gt;{{ age}}&lt;/h1&gt;
+{% end %}
+</code></pre><ul>
+<li><p>if elif else end    </p>
+<pre><code>{% for i in ages %}
+    {% if i < 3%}
+        &lt;p&gt;{{ i+3}}&lt;/p&gt;
+    {% elif i == 3%}
+        &lt;p&gt;{{ i}}&lt;/p&gt;
+    {% else %}
+        &lt;p&gt;None&lt;/p&gt;
+    {% end %}
+{% end %}
+</code></pre></li>
+</ul>
+<h2 id="模板的继承"><a href="#模板的继承" class="headerlink" title="模板的继承"></a>模板的继承</h2><h3 id="块（block）的使用"><a href="#块（block）的使用" class="headerlink" title="块（block）的使用"></a>块（block）的使用</h3><ol>
+<li>编写 公共模板 base.html</li>
+<li><p>在 公共模板上 划出一段区域，给继承的模板重写</p>
+<pre><code>{% block 块名称 %}
+{% end %}
+</code></pre></li>
+<li><p>在要继承的模板内，写上继承证明</p>
+<pre><code>{% extend base.html %}        
+</code></pre></li>
+<li><p>在要继承的模板内，重写该块block，使用相同的块名</p>
+<pre><code>{% block 块名称 %}
+    &lt;p&gt;我重写了block&lt;/p&gt;
+{% end %}
+</code></pre></li>
+<li><p>注意</p>
+<ul>
+<li>没有使用 block 包含的任何东西，都无法显示</li>
+</ul>
+</li>
+</ol>
+<h3 id="模块（module）的使用-与django中不同"><a href="#模块（module）的使用-与django中不同" class="headerlink" title="模块（module）的使用 (与django中不同)"></a>模块（module）的使用 (与django中不同)</h3><ul>
+<li>module的使用</li>
+<li>利用模板 作为一个独立的部分，与 块的继承不同</li>
+<li><p>module的内容，使用填充的方式，填入 template 中</p>
+</li>
+<li><p>使用方式：</p>
+<p>  １．创建一个文件夹存放模块文件．该文件夹必须建立在模板文件夹下．</p>
+<p>  ２．创建模块文件．（html文件）</p>
+<pre><code># login_module 是一个module
+mymodule/login_module.html    
+</code></pre><p>  ３．关联模板文件和模块文件</p>
+<pre><code>在template中写入
+{%module login_module()%}
+</code></pre><ol start="4">
+<li><p>进行配置．在Application中增加参数：</p>
+<pre><code>ui_modules={&apos;login_module&apos;:LoginModule}
+</code></pre><p>５．创建配置时对应的类，必须继承自UIModule，重写钩子方法render，该方法必须返回一个字符串，</p>
+<ol>
+<li>作为模板与模块的关联内容．所以这里应该返回的是模块文件转成的字符串，直接调用UIModule的render_string方法就可以完成．</li>
+<li><p>注意：如果模块中有变量，表达式等内容，必须在render_string方法中对变量，表达式进行相应的赋值．</p>
+<pre><code>from tornado.web import UIModule
+class LoginModule(UIModule):
+    def render(self, *args, **kwargs):
+        # 返回一个字符串给 templates
+
+        return self.render_string(&apos;mymodule/login_module.html&apos;)
+        # 也可像render 一样传入参数
+        return self.render_string(&apos;mymodule/login_module.html&apos;, names=123)
+</code></pre></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="UIModule-中的-request"><a href="#UIModule-中的-request" class="headerlink" title="UIModule 中的 request"></a>UIModule 中的 request</h1><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>HTTP的请求方式，如GET或POST;</td>
+</tr>
+<tr>
+<td>host</td>
+<td>被请求的主机名；</td>
+</tr>
+<tr>
+<td>uri</td>
+<td>请求的完整资源标示，包括路径和查询字符串；</td>
+</tr>
+<tr>
+<td>path</td>
+<td>请求的路径部分；</td>
+</tr>
+<tr>
+<td>query</td>
+<td>请求的查询字符串部分；</td>
+</tr>
+<tr>
+<td>version</td>
+<td>使用的HTTP版本；</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>请求的协议头，是类似字典的对象，支持关键字索引的方式获取特定协议头信息，例如：request.headers[“Content-Type”]<br>也可以用get的方式获取指定特定协议头信息；</td>
+</tr>
+<tr>
+<td>body</td>
+<td>请求体数据（二进制格式）；</td>
+</tr>
+<tr>
+<td>remote_ip</td>
+<td>客户端的IP地址；</td>
+</tr>
+<tr>
+<td>files</td>
+<td>用户上传的文件，为字典类型</td>
+</tr>
+</tbody>
+</table>
+<h1 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h1><ol>
+<li>常见的静态资源包括：图片，ｊｓ，ｃｓｓ</li>
+<li><p>使用静态资源的步骤：</p>
+<ol>
+<li><p>新建存放静态资源的文件夹．静态资源文件夹下可以继续新建子文件夹，把不同类型的静态资源文件存入不同的子文件夹中．</p>
+</li>
+<li><p>进行静态资源的配置．给Application继续添加参数   static_path=’static’</p>
+<pre><code># 路由列表
+app = Application([
+    (&apos;/&apos;, IndexHandler),
+    (&apos;/login&apos;, LoginHandler),
+    (&apos;/blog&apos;, BlogHandler, {&apos;date&apos;:&apos;day2&apos;, &apos;subject&apos;:&apos;response&apos;}),
+    ],template_path = &apos;mytemplates&apos;,
+    static_path=&apos;static&apos;
+    )
+</code></pre></li>
+<li><p>需要使用静态资源时，要遵照如下格式：<br>　　　　　 static/子文件夹名称/具体静态资源文件的名称<br> 　　　例如：static/images/default_avatar.png</p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="Tornado的转义"><a href="#Tornado的转义" class="headerlink" title="Tornado的转义"></a>Tornado的转义</h1><ul>
+<li>一种安全机制，防止用户在页面中嵌入JavaScript代码</li>
+<li>这种安全机制是自动开启的</li>
+<li><p>可以通过设置进行关闭，给Application添加参数：autoescape=None</p>
+<pre><code># 默认不执行，
+&lt;script&gt;alert(1);&lt;/script&gt;
+# tornado 转义为文本
+&amp;lt;script&amp;gt;alert(1);&amp;lt;script&amp;gt;
+</code></pre></li>
+</ul>
+<h1 id="数组库操作"><a href="#数组库操作" class="headerlink" title="数组库操作"></a>数组库操作</h1><ul>
+<li><p>tornado 没有数据库的 ORM 映射</p>
+</li>
+<li><p>自己添加相应的类进行操作</p>
+</li>
+</ul>
+<h2 id="使用-pymysql"><a href="#使用-pymysql" class="headerlink" title="使用 pymysql"></a>使用 pymysql</h2><ul>
+<li><p>自定义操作类</p>
+<ol>
+<li>连接数据库</li>
+<li>获取游标</li>
+<li>cursor.excute()  </li>
+<li>fetch 获取查询</li>
+<li>关闭游标</li>
+<li>关闭连接</li>
+</ol>
+</li>
+</ul>
+<h2 id="使用-tornado中的-torndb，-torndb-需要额外安装"><a href="#使用-tornado中的-torndb，-torndb-需要额外安装" class="headerlink" title="使用 tornado中的 torndb， torndb 需要额外安装"></a>使用 tornado中的 torndb， torndb 需要额外安装</h2><ul>
+<li>但是需要安装 MYSQLdb</li>
+<li>python3 已经不支持 MYSQLdb了</li>
+</ul>
+<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><h1 id="普通cookie"><a href="#普通cookie" class="headerlink" title="普通cookie"></a>普通cookie</h1><ol>
+<li><p>设置cookie</p>
+<pre><code>set_cookie(name, value,expires=None, expires_days=None,)
+</code></pre></li>
+</ol>
+<blockquote>
+<p>expires</p>
+</blockquote>
+<ul>
+<li>设置为 15 * 60 ，保存为 15 分钟后过时</li>
+</ul>
+<blockquote>
+<p>expies_day</p>
+</blockquote>
+<ul>
+<li>设置为 30 表示cookie保存为 30天</li>
+</ul>
+<blockquote>
+<p>默认不加 expires 和 expires_day</p>
+</blockquote>
+<ul>
+<li>浏览器器关闭后就清除</li>
+</ul>
+<ol start="2">
+<li>获取cookie<pre><code>get_cookie(&apos;name&apos;)
+</code></pre></li>
+</ol>
+<h1 id="加密cookie"><a href="#加密cookie" class="headerlink" title="加密cookie"></a>加密cookie</h1><ol>
+<li><p>设置cookie</p>
+<pre><code>set_secure_cookie(name, value,expires=None, expires_days=None)
+</code></pre></li>
+</ol>
+<blockquote>
+<p>expires</p>
+</blockquote>
+<ul>
+<li>设置为 15 * 60 ，保存为 15 分钟后过时</li>
+</ul>
+<blockquote>
+<p>expies_day</p>
+</blockquote>
+<ul>
+<li>设置为 30 表示cookie保存为 30天</li>
+</ul>
+<blockquote>
+<p>默认 expires_day 为 30 天</p>
+</blockquote>
+<ul>
+<li>浏览器器关闭后不会清除</li>
+<li><p>需要另外设置</p>
+<pre><code>set_secure_cookie(name, value, expires_days=None,)
+</code></pre></li>
+</ul>
+<ol start="2">
+<li>注意</li>
+</ol>
+<ul>
+<li><p>secure 需要配合 cookie_secret 进行使用</p>
+<pre><code>import base64
+import uuid
+# 加密字符串
+a = base64.b64encode(uuid.uuid4().bytes + uuid.uuid4().bytes)
+app = Application(cookie_secret= a)
+</code></pre></li>
+</ul>
+<ol start="3">
+<li>获取cookie<pre><code>get_secure_cookie(&apos;name&apos;)
+</code></pre></li>
+</ol>
+<h1 id="安全设置"><a href="#安全设置" class="headerlink" title="安全设置"></a>安全设置</h1><p>authenticated</p>
+<h1 id="数据服务器"><a href="#数据服务器" class="headerlink" title="数据服务器"></a>数据服务器</h1><ul>
+<li>通过与数据服务器的API接口，获取相应的json字符串</li>
+<li><a href="http://www.juhe.com" target="_blank" rel="noopener">www.juhe.com</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/服务器管理/" rel="tag"># 服务器管理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/08/python-thread/" rel="next" title="Thread_note">
+                <i class="fa fa-chevron-left"></i> Thread_note
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/10/spider-note/" rel="prev" title="crawl_note">
+                crawl_note <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Laurel-rao</p>
+              <p class="site-description motion-element" itemprop="description">Laurel-rao 博客网站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text"> tornado笔记 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tornado介绍"><span class="nav-number">2.</span> <span class="nav-text">tornado介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基础配置"><span class="nav-number">3.</span> <span class="nav-text">1.基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置文件"><span class="nav-number">3.1.</span> <span class="nav-text">2.配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-配置路由列表"><span class="nav-number">3.2.</span> <span class="nav-text">3.配置路由列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#request"><span class="nav-number">4.</span> <span class="nav-text">request</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#钩子方法"><span class="nav-number">5.</span> <span class="nav-text">钩子方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">5.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本RequestHandler中的钩子方法"><span class="nav-number">5.2.</span> <span class="nav-text">基本RequestHandler中的钩子方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义"><span class="nav-number">6.</span> <span class="nav-text">自定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义状态码"><span class="nav-number">6.1.</span> <span class="nav-text">自定义状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义错误页面"><span class="nav-number">6.2.</span> <span class="nav-text">自定义错误页面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#response"><span class="nav-number">7.</span> <span class="nav-text">response</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#json字符串"><span class="nav-number">7.1.</span> <span class="nav-text">json字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用json-dumps-转换字典-再传入jsonstr"><span class="nav-number">7.1.1.</span> <span class="nav-text">使用json.dumps 转换字典 再传入jsonstr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接传入-字典-推荐"><span class="nav-number">7.1.2.</span> <span class="nav-text">直接传入 字典  == 推荐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板页面-templates"><span class="nav-number">7.2.</span> <span class="nav-text">模板页面 templates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板详解"><span class="nav-number">7.3.</span> <span class="nav-text">模板详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#render函数"><span class="nav-number">7.3.1.</span> <span class="nav-text">render函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html中传参"><span class="nav-number">7.3.2.</span> <span class="nav-text">html中传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础语句"><span class="nav-number">7.3.3.</span> <span class="nav-text">基础语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的继承"><span class="nav-number">7.4.</span> <span class="nav-text">模板的继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#块（block）的使用"><span class="nav-number">7.4.1.</span> <span class="nav-text">块（block）的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块（module）的使用-与django中不同"><span class="nav-number">7.4.2.</span> <span class="nav-text">模块（module）的使用 (与django中不同)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UIModule-中的-request"><span class="nav-number">8.</span> <span class="nav-text">UIModule 中的 request</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态资源"><span class="nav-number">9.</span> <span class="nav-text">静态资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tornado的转义"><span class="nav-number">10.</span> <span class="nav-text">Tornado的转义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组库操作"><span class="nav-number">11.</span> <span class="nav-text">数组库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-pymysql"><span class="nav-number">11.1.</span> <span class="nav-text">使用 pymysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-tornado中的-torndb，-torndb-需要额外安装"><span class="nav-number">11.2.</span> <span class="nav-text">使用 tornado中的 torndb， torndb 需要额外安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cookie"><span class="nav-number">12.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#普通cookie"><span class="nav-number">13.</span> <span class="nav-text">普通cookie</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#加密cookie"><span class="nav-number">14.</span> <span class="nav-text">加密cookie</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安全设置"><span class="nav-number">15.</span> <span class="nav-text">安全设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据服务器"><span class="nav-number">16.</span> <span class="nav-text">数据服务器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Laurel-rao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

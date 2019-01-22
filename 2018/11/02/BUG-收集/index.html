@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/08/i71Dkn.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/08/i71rYq.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2018/11/08/i71One.md.png">
-<meta property="og:updated_time" content="2018-11-29T02:05:22.037Z">
+<meta property="og:updated_time" content="2019-01-22T08:13:06.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BUG 收集">
 <meta name="twitter:description" content="使用 restframework 时， views 继承自 APIView  bug 描述  前后分离时，除get 以外的请求都不能访问，得到403 forbidden 且使用postman，请求无异常 且框架中的csrf中间件无法限制 继承APIView的 view类(csrf 中间件的有无不影响post等访问) 当开启csrf 中间件时，该post又可以发送了   问题剖析  APIView">
@@ -341,12 +341,14 @@
 </li>
 <li><p>问题剖析</p>
 <ol>
-<li>APIView内部默认使用<br> <code>rest_framework.authentication.SessionAuthentication</code></li>
-<li><p>将在类中或settings 文件中设置 authentication 为 空列表即可</p>
-<ol>
-<li><p>在类中局部设置</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XXXView</span><span class="params">(APIView)</span>:</span></span><br><span class="line">	authentication_classes = []</span><br></pre></td></tr></table></figure>
+<li><p>APIView内部默认使用</p>
+<p>   <code>rest_framework.authentication.SessionAuthentication</code></p>
 </li>
+<li><p>将在类中或settings 文件中设置 authentication 为 空列表即可</p>
+<pre><code>  1. 在类中局部设置
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">XXXView</span><span class="params">(APIView)</span>:</span></span><br><span class="line">	authentication_classes = []</span><br></pre></td></tr></table></figure>
+</code></pre><ol start="2">
 <li><p>在settings文件中设置</p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">REST_FRAMEWORK = &#123;</span><br><span class="line">	DEFAULT_AUTHENTICATION_CLASSES = [],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -402,19 +404,23 @@
 </ol>
 </li>
 <li><p>django 登陆时，不可使用中文</p>
-<p> <img src="https://s1.ax1x.com/2018/11/08/i71Dkn.png" alt="i71Dkn.png"></p>
+<p><img src="https://s1.ax1x.com/2018/11/08/i71Dkn.png" alt="i71Dkn.png"></p>
 <ol>
 <li><p>服务器报错信息</p>
-<p> <a href="https://imgchr.com/i/i71rYq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/08/i71rYq.md.png" alt="i71rYq.md.png"></a></p>
+<p><a href="https://imgchr.com/i/i71rYq" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/08/i71rYq.md.png" alt="i71rYq.md.png"></a></p>
 </li>
 <li><p>问题解决</p>
 <ol>
-<li><p>第一个问题，数据库的字符集是否为 utf8</p>
+<li>第一个问题，数据库的字符集是否为 utf8</li>
+</ol>
 <ol>
 <li><p>在mysql中输入 </p>
  <figure class="highlight plain"><figcaption><span>variables like 'char%';```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	[![i71b6O.md.png](https://s1.ax1x.com/2018/11/08/i71b6O.md.png)](https://imgchr.com/i/i71b6O)</span><br><span class="line"></span><br><span class="line">2. 设置字符集</span><br><span class="line">	```set character_set_server = &quot;utf8&quot;;</span><br></pre></td></tr></table></figure>
 <p> <a href="https://imgchr.com/i/i71One" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2018/11/08/i71One.md.png" alt="i71One.md.png"></a></p>
-</li>
+<ol start="2">
+<li>默认在wsgiref中的headers.py 中，使用的是 iso-8859-1 的编码格式<ol>
+<li>此格式不支持中文，所以报错</li>
+<li>将iso-8859-1 改为 utf-8，问题解决，用户可正常登陆</li>
 </ol>
 </li>
 </ol>
@@ -422,10 +428,9 @@
 </ol>
 </li>
 </ol>
-<pre><code>2. 默认在wsgiref中的headers.py 中，使用的是 iso-8859-1 的编码格式
-    1. 此格式不支持中文，所以报错
-    2. 将iso-8859-1 改为 utf-8，问题解决，用户可正常登陆
-</code></pre><ol start="5">
+</li>
+</ol>
+<ol start="5">
 <li><p>使用UDP 和 TCP 时的坑</p>
 <ol>
 <li>UDP 的端口和 TCP端口都是虚拟端口，即时UDP和TCP使用一样的端口，也不会报错</li>
@@ -448,18 +453,27 @@
     <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.body.decode(encoding=&apos;gbk&apos;)</span><br></pre></td></tr></table></figure>
 </code></pre><ol start="7">
 <li><p>使用 django  migrate 命令报错</p>
-<ol>
-<li><p>django 2.1 版本后不再支持 5.6 以下的 mysql</p>
 <ul>
-<li>syntax error <code>(6)NOT NULL</code></li>
+<li><p>django 2.1 版本后不再支持 5.6 以下的 mysql</p>
+</li>
+<li><p>syntax error `(6)NOT NULL`</p>
+</li>
+<li><p>升级mysql   </p>
+</li>
 </ul>
 </li>
-<li><p>升级mysql </p>
+<li><p>项目背景(使用napalm 包连接网络设备(routers switches) 并修改用户的密码)</p>
+<ol>
+<li>手动ssh 连接上去可以正常修改密码</li>
+<li>使用napalm 登陆正常，使用 get_facts 方法 正常</li>
+<li><p>使用napalm 包的（load_merge_candidate）方法修改，报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">              File &quot;conn.py&quot;, line10 in &lt;module&gt;</span><br><span class="line">              conn.load_merge_candidate(config=&quot;username lxy secret  lxy@123&quot; )</span><br><span class="line">          File  &quot;/usr/local/lib/python3.6/site-packages/napalm/ios/ios.py&quot;, line 268, in load_merge_candidate</span><br><span class="line">              file_system=self.dest_file_system)</span><br><span class="line">          File  &quot;/usr/local/lib/python3.6/site-packages/napalm/ios/ios.py&quot;, line 228, in _load_candidate_wrapper</span><br><span class="line">              file_system=file_system)</span><br><span class="line">          File  &quot;/usr/local/lib/python3.6/site-packages/napalm/ios/ios.py&quot;, line 513, in _scp_file</span><br><span class="line">              file_system=file_system, TransferClass=FileTransfer</span><br><span class="line">          File  &quot;/usr/local/lib/python3.6/site-packages/napalm/ios/ios.py&quot;, line 562, in _xfer_file</span><br><span class="line">              transfer.transfer_file()</span><br><span class="line">          File  &quot;/usr/local/lib/python3.6/site-packages/netmiko/scp_handler.py&quot;, line 279, in transfer_file</span><br><span class="line">              self.put_file()</span><br><span class="line">    File  &quot;/usr/local/lib/python3.6/site-packages/netmiko/scp_handler.py&quot;, line 292, in put_file</span><br><span class="line">              self.scp_conn.scp_transfer_file(self.source_file, destination)</span><br><span class="line">          File  &quot;/usr/local/lib/python3.6/site-packages/netmiko/scp_handler.py&quot;, line 39, in scp_transfer_file</span><br><span class="line">              self.scp_client.put(Source_file, dest_file)</span><br><span class="line">          File  &quot;/usr/local/lib/python3.6/site-packages/scp.py&quot;, line 157, in put</span><br><span class="line">              self._recv_confirm()</span><br><span class="line">    File  &quot;/usr/local/lib/python3.6/site-packages/scp.py&quot;, line 361, in _recv_confirm</span><br><span class="line">          raise SCPException(asunicode(msg[1:]))</span><br><span class="line">scp.SCPException: Privilege denied.</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
 </ol>
-
+<pre><code>4. napalm 基于 netmiko 中的 filetransfer 工厂函数进行访问
+</code></pre>
       
     </div>
     

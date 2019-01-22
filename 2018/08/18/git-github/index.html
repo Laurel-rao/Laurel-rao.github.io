@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="git 是一个分布式版本控制系统 git教程http://iissnan.com/progit/ git教程https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000     特点 集中式 分布式     系统特点 1.集中式系统，版本库集中存放于中央服务器2.企业内并行集中开发3.wind">
+<meta name="description" content="git 是一个分布式版本控制系统 git教程http://iissnan.com/progit/ git教程https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000 gitignore 规则 https://www.cnblogs.com/kevingrace/p/5690241.html">
 <meta name="keywords" content="代码保存-代码管理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git-github">
 <meta property="og:url" content="http://yoursite.com/2018/08/18/git-github/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="git 是一个分布式版本控制系统 git教程http://iissnan.com/progit/ git教程https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000     特点 集中式 分布式     系统特点 1.集中式系统，版本库集中存放于中央服务器2.企业内并行集中开发3.wind">
+<meta property="og:description" content="git 是一个分布式版本控制系统 git教程http://iissnan.com/progit/ git教程https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000 gitignore 规则 https://www.cnblogs.com/kevingrace/p/5690241.html">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-11-27T10:41:50.257Z">
+<meta property="og:updated_time" content="2019-01-22T07:39:15.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git-github">
-<meta name="twitter:description" content="git 是一个分布式版本控制系统 git教程http://iissnan.com/progit/ git教程https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000     特点 集中式 分布式     系统特点 1.集中式系统，版本库集中存放于中央服务器2.企业内并行集中开发3.wind">
+<meta name="twitter:description" content="git 是一个分布式版本控制系统 git教程http://iissnan.com/progit/ git教程https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000 gitignore 规则 https://www.cnblogs.com/kevingrace/p/5690241.html">
 
 
 
@@ -325,6 +325,7 @@
         <h1 id="git-是一个分布式版本控制系统"><a href="#git-是一个分布式版本控制系统" class="headerlink" title="git 是一个分布式版本控制系统"></a>git 是一个分布式版本控制系统</h1><ul>
 <li>git教程<a href="http://iissnan.com/progit/" target="_blank" rel="noopener">http://iissnan.com/progit/</a></li>
 <li>git教程<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></li>
+<li>gitignore 规则 <a href="https://www.cnblogs.com/kevingrace/p/5690241.html" target="_blank" rel="noopener">https://www.cnblogs.com/kevingrace/p/5690241.html</a></li>
 </ul>
 <table>
 <thead>
@@ -368,10 +369,8 @@
 <li>修改者，被修改的内容，时间，修改备注</li>
 </ul>
 </li>
-<li><p>常见问题<br>  -fatal: refusing to merge unrelated histories</p>
-<pre><code>- 无法正常 pull ，使用下面这条语句
-        git pull origin master --allow-unrelated-histories
-</code></pre><ul>
+<li><p>常见问题<br>  -fatal: refusing to merge unrelated histories<br>  ​    - 无法正常 pull ，因为远程仓库与本地仓库没有一样commit信息，使用下面这条语句，<br>  ​            git pull origin master –allow-unrelated-histories</p>
+<ul>
 <li>! [rejected]        master -&gt; master (non-fast-forward)<ul>
 <li>使用 pull拉取后重试</li>
 </ul>
@@ -411,7 +410,7 @@
 
     4. 合并完成, 如果失败，需要手动修改冲突信息
 
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	hello python</span><br><span class="line">	&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">	i will show you magic that change the faith</span><br><span class="line">	=======</span><br><span class="line">	hello go</span><br><span class="line">	hello javascript</span><br><span class="line">	hello java</span><br><span class="line">	&gt;&gt;&gt;&gt;&gt;&gt;&gt; dev</span><br><span class="line"></span><br><span class="line">```	</span><br><span class="line">- &lt;&lt;&lt; HEAD   到   ======= 之间的内容表示原分支</span><br><span class="line">- =======    到   &gt;&gt;&gt;&gt;&gt;&gt; dev 之间的内容表示被合并的分支，就是git merge dev，dev分支</span><br><span class="line">- 将 三个 标识符，修改成你想要的样本</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	hello python</span><br><span class="line">	&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">	i will show you magic that change the faith</span><br><span class="line">	=======</span><br><span class="line">	hello go</span><br><span class="line">	hello javascript</span><br><span class="line">	hello java</span><br><span class="line">	&gt;&gt;&gt;&gt;&gt;&gt;&gt; dev</span><br><span class="line">	</span><br><span class="line">```	</span><br><span class="line">- &lt;&lt;&lt; HEAD   到   ======= 之间的内容表示原分支</span><br><span class="line">- =======    到   &gt;&gt;&gt;&gt;&gt;&gt; dev 之间的内容表示被合并的分支，就是git merge dev，dev分支</span><br><span class="line">- 将 三个 标识符，修改成你想要的样本</span><br></pre></td></tr></table></figure>
 
                 hello python
                 i will show you magic that change the faith
@@ -422,7 +421,8 @@
     5. 最后删除分支
 
         - `git branch -d tmp`
-</code></pre><h3 id="git-命令"><a href="#git-命令" class="headerlink" title="git  命令"></a>git  命令</h3><table>
+</code></pre><p>​         </p>
+<h3 id="git-命令"><a href="#git-命令" class="headerlink" title="git  命令"></a>git  命令</h3><table>
 <thead>
 <tr>
 <th>命令</th>
@@ -687,7 +687,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -698,7 +698,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 
               </div>
@@ -709,7 +709,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -762,7 +762,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
